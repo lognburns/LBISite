@@ -52,3 +52,11 @@ cd site && python3 -m http.server 8080
 ```
 
 Open http://localhost:8080
+
+## Live preview (GitHub Pages)
+
+The site deploys automatically on every push to `main`.
+
+**Client URL:** https://lognburns.github.io/LBISite/
+
+If this is the first deploy, enable Pages in the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
