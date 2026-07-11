@@ -35,9 +35,9 @@ PROJECTS = [
         "cat": "Private Residential",
         "blurb": "Layered blues and tailored millwork give this residence a quietly grand register, classic forms, modern restraint.",
         "images": [
+            ("0b75c1_d48f5e242e774d4ca6cdac93cfe24637", "g-w"),
             ("0b75c1_c37943c00feb4dceb0d11ecb2c41ee67", "g-w"),
             ("0b75c1_58c32e8abd9a4643b9579dfb7c65ceb0", "g-t"),
-            ("0b75c1_d48f5e242e774d4ca6cdac93cfe24637", "g-w"),
             ("0b75c1_c147bf8dd6d44c50ae873573f391a513", "g-t"),
             ("0b75c1_dced07394c8f41e78ac4e3596ea79e6e", "g-h"),
             ("0b75c1_1e63287e8dec446483d7d2666a35d121", "g-h"),
@@ -48,9 +48,9 @@ PROJECTS = [
         "cat": "Private Residential",
         "blurb": "Grounded tones, natural texture, and confident contrast, a home that feels rooted and unmistakably lived-in.",
         "images": [
+            ("0b75c1_a97310e5504d41d69c3f35d83c08957f", "g-h"),
             ("0b75c1_9db3879aa591458b8cec814d76fe20a5", "g-w"),
             ("0b75c1_4b851c81be954ff0bc8e5b1c5eb6ba55", "g-t"),
-            ("0b75c1_a97310e5504d41d69c3f35d83c08957f", "g-h"),
             ("0b75c1_80a1df6a5aed4a6b8fb140edef9e9235", "g-h"),
             ("0b75c1_7a5a79ecfbed472592db07ed69f61240", "g-w"),
             ("0b75c1_648d15f238cc4814bb06efd001aa37c2", "g-t"),
@@ -160,6 +160,7 @@ PROJECTS = [
         "cat": "Private Residential",
         "blurb": "Traditional details and layered comfort combine for a home that feels welcoming, polished, and timeless.",
         "images": [
+            ("0b75c1_320d427f58e6470c9f4938ca1a832a38", "g-h"),
             ("0b75c1_c8fe9ef7bb404fb090c9fccee373ab85", "g-t"),
             ("0b75c1_b172ec7ab5d44ffd9797e858ec841e36", "g-w"),
             ("0b75c1_53bdbfa00d76477fb6e7a4da0e9f8bf4", "g-h"),
@@ -167,7 +168,6 @@ PROJECTS = [
             ("0b75c1_6f44a95d7eb044f2b84b98cbbd910f0b", "g-t"),
             ("0b75c1_d14a56d355de4038bdb5ca95406ce190", "g-w"),
             ("0b75c1_3252a1ceee80484db3429622285d3c6e", "g-h"),
-            ("0b75c1_320d427f58e6470c9f4938ca1a832a38", "g-h"),
             ("0b75c1_4137756485ab4cfca1547d9c96159d3a", "g-h"),
             ("0b75c1_b84d351f0d2f46e7a0cd2db5fb04711a", "g-h"),
             ("0b75c1_3cc4ca0d81204f38bac8e6d9f8fed405", "g-t"),
@@ -256,9 +256,10 @@ PROJECTS = [
 ]
 
 HERO_SLIDES = [
-    ("0b75c1_c37943c00feb4dceb0d11ecb2c41ee67", "Custom Luxury", "Private Residential"),
-    ("0b75c1_9db3879aa591458b8cec814d76fe20a5", "Bold & Earthy", "Private Residential"),
+    ("0b75c1_a97310e5504d41d69c3f35d83c08957f", "Bold & Earthy", "Private Residential"),
+    ("0b75c1_d48f5e242e774d4ca6cdac93cfe24637", "Custom Luxury", "Private Residential"),
     ("0b75c1_fee480971fe84e58b260f842b8c03450", "Organic Sophistication", "Private Residential"),
+    ("0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3", "Mid-Century Modern", "Private Residential"),
 ]
 
 SERVICES = [
@@ -336,8 +337,8 @@ def all_images():
         seen[img_id] = ext
     for img_id in (
         "0b75c1_d48f5e242e774d4ca6cdac93cfe24637",
-        "0b75c1_7a5a79ecfbed472592db07ed69f61240",
-        "0b75c1_584e30f55ba1422ebacb1ca515d78dc0",
+        "0b75c1_69b48635031d45babb53d8bc25c17981",
+        "0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3",
         "0b75c1_dced07394c8f41e78ac4e3596ea79e6e",
         "0b75c1_1e63287e8dec446483d7d2666a35d121",
     ):
@@ -508,11 +509,11 @@ def build_index():
         <div class="panel-label"><span class="eyebrow">Portfolio</span><span class="display-md">Residential Design</span></div>
       </a>
       <a class="panel" href="services.html">
-        <div class="bg" style="background-image:url('{img('0b75c1_7a5a79ecfbed472592db07ed69f61240')}')"></div>
+        <div class="bg" style="background-image:url('{img('0b75c1_69b48635031d45babb53d8bc25c17981')}')"></div>
         <div class="panel-label"><span class="eyebrow">Services</span><span class="display-md">How We Work</span></div>
       </a>
       <a class="panel" href="contact.html">
-        <div class="bg" style="background-image:url('{img('0b75c1_584e30f55ba1422ebacb1ca515d78dc0')}')"></div>
+        <div class="bg" style="background-image:url('{img('0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3')}')"></div>
         <div class="panel-label"><span class="eyebrow">Enquire</span><span class="display-md">Begin a Project</span></div>
       </a>
     </div>
