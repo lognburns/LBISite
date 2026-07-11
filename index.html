@@ -277,7 +277,10 @@ a { color: inherit; text-decoration: none; }
     linear-gradient(125deg, rgba(201, 168, 106, 0.12) 0%, transparent 28%),
     linear-gradient(180deg, rgba(23,20,15,0.35) 0%, rgba(23,20,15,0.05) 40%, rgba(23,20,15,0.72) 100%);
 }
-.hero-caption .display-xl { max-width: 14ch; }
+.hero .hero-caption .display-xl {
+  max-width: 14ch;
+  font-size: clamp(2.0625rem, 5.25vw, 4.5rem);
+}
 .hero-rule {
   width: 4.5rem; height: 1px; background: var(--gradient-gold);
 }
@@ -555,12 +558,13 @@ textarea { resize: vertical; min-height: 7rem; }
 </header>
 <main>
 <section class="hero">
-  <div class="hero-slide on" data-title="Custom Luxury" data-cat="Private Residential" style="background-image:url('images/0b75c1_c37943c00feb4dceb0d11ecb2c41ee67.jpg')" role="img" aria-label="Custom Luxury interior by Lauren Burns Interiors"></div>
-  <div class="hero-slide" data-title="Bold & Earthy" data-cat="Private Residential" style="background-image:url('images/0b75c1_9db3879aa591458b8cec814d76fe20a5.jpg')" role="img" aria-label="Bold & Earthy interior by Lauren Burns Interiors"></div>
+  <div class="hero-slide on" data-title="Bold & Earthy" data-cat="Private Residential" style="background-image:url('images/0b75c1_a97310e5504d41d69c3f35d83c08957f.jpg')" role="img" aria-label="Bold & Earthy interior by Lauren Burns Interiors"></div>
+  <div class="hero-slide" data-title="Custom Luxury" data-cat="Private Residential" style="background-image:url('images/0b75c1_d48f5e242e774d4ca6cdac93cfe24637.jpg')" role="img" aria-label="Custom Luxury interior by Lauren Burns Interiors"></div>
   <div class="hero-slide" data-title="Organic Sophistication" data-cat="Private Residential" style="background-image:url('images/0b75c1_fee480971fe84e58b260f842b8c03450.jpg')" role="img" aria-label="Organic Sophistication interior by Lauren Burns Interiors"></div>
+  <div class="hero-slide" data-title="Mid-Century Modern" data-cat="Private Residential" style="background-image:url('images/0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3.jpg')" role="img" aria-label="Mid-Century Modern interior by Lauren Burns Interiors"></div>
   <div class="hero-caption">
     <span class="eyebrow" data-hero-cat>Private Residential</span>
-    <h1 class="display-xl" data-hero-title>Custom Luxury</h1>
+    <h1 class="display-xl" data-hero-title>Bold & Earthy</h1>
     <div class="hero-rule"></div>
   </div>
 </section>
@@ -581,11 +585,11 @@ textarea { resize: vertical; min-height: 7rem; }
         <div class="panel-label"><span class="eyebrow">Portfolio</span><span class="display-md">Residential Design</span></div>
       </a>
       <a class="panel" href="services.html">
-        <div class="bg" style="background-image:url('images/0b75c1_7a5a79ecfbed472592db07ed69f61240.jpg')"></div>
+        <div class="bg" style="background-image:url('images/0b75c1_69b48635031d45babb53d8bc25c17981.jpg')"></div>
         <div class="panel-label"><span class="eyebrow">Services</span><span class="display-md">How We Work</span></div>
       </a>
       <a class="panel" href="contact.html">
-        <div class="bg" style="background-image:url('images/0b75c1_584e30f55ba1422ebacb1ca515d78dc0.jpg')"></div>
+        <div class="bg" style="background-image:url('images/0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3.jpg')"></div>
         <div class="panel-label"><span class="eyebrow">Enquire</span><span class="display-md">Begin a Project</span></div>
       </a>
     </div>
@@ -600,14 +604,14 @@ textarea { resize: vertical; min-height: 7rem; }
     </div>
     <div class="grid-projects">
     <a class="card reveal" href="projects/custom-luxury.html">
-      <div class="frame"><img src="images/0b75c1_c37943c00feb4dceb0d11ecb2c41ee67.jpg" alt="Custom Luxury, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="images/0b75c1_d48f5e242e774d4ca6cdac93cfe24637.jpg" alt="Custom Luxury, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">Private Residential</span>
         <span class="display-md">Custom Luxury</span>
       </div>
     </a>
     <a class="card reveal" href="projects/bold-earthy.html">
-      <div class="frame"><img src="images/0b75c1_9db3879aa591458b8cec814d76fe20a5.jpg" alt="Bold & Earthy, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="images/0b75c1_a97310e5504d41d69c3f35d83c08957f.jpg" alt="Bold & Earthy, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">Private Residential</span>
         <span class="display-md">Bold & Earthy</span>
@@ -649,7 +653,7 @@ textarea { resize: vertical; min-height: 7rem; }
       </div>
     </a>
     <a class="card reveal" href="projects/cozy-and-classic.html">
-      <div class="frame"><img src="images/0b75c1_c8fe9ef7bb404fb090c9fccee373ab85.jpg" alt="Cozy & Classic, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="images/0b75c1_320d427f58e6470c9f4938ca1a832a38.jpg" alt="Cozy & Classic, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">Private Residential</span>
         <span class="display-md">Cozy & Classic</span>
