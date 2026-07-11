@@ -1,5 +1,5 @@
 /* ============================================================
-   Lauren Burns Interiors — Editorial Dark System
+   Lauren Burns Interiors - Editorial Dark System
    Palette: warm ink, bone cream, muted brass
    Type: Cormorant Garamond (display) / Manrope (utility+body)
    ============================================================ */
@@ -9,7 +9,7 @@
   --ink-soft: #1f1b15;     /* raised panels */
   --bone: #efe9df;         /* primary text on dark */
   --bone-dim: #b9b1a3;     /* secondary text */
-  --brass: #a8865a;        /* accent — rules, eyebrows, hover */
+  --brass: #a8865a;        /* accent: rules, eyebrows, hover */
   --gold: #c9a86a;         /* logo champagne */
   --gold-light: #e2c98e;
   --gold-dim: rgba(201, 168, 106, 0.42);
@@ -19,6 +19,7 @@
   --line: rgba(239, 233, 223, 0.14);
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-utility: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --font-brand: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   --pad: clamp(1.25rem, 4vw, 4rem);
   --nav-h: 5rem;
 }
@@ -204,12 +205,16 @@ a { color: inherit; text-decoration: none; }
   height: 4rem;
   width: auto;
 }
-.footer .brand-name { font-size: 1.7rem; }
+.footer .brand-name { font-size: 1.35rem; }
 .brand-name {
-  font-family: var(--font-display);
-  font-size: 1.45rem; font-weight: 500; letter-spacing: 0.05em;
+  font-family: var(--font-brand);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: uppercase;
 }
 .brand-sub {
+  font-family: var(--font-brand);
   font-size: 0.5625rem; font-weight: 500;
   letter-spacing: 0.5em; text-transform: uppercase; color: var(--bone-dim);
 }
@@ -357,6 +362,37 @@ a { color: inherit; text-decoration: none; }
 .card:hover .frame img { transform: scale(1.04); }
 .card .meta { display: flex; flex-direction: column; gap: 0.3rem; }
 @media (max-width: 720px) { .grid-projects { grid-template-columns: 1fr; } }
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 3rem;
+}
+.portfolio-filter {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--bone-dim);
+  cursor: pointer;
+  font-family: var(--font-utility);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  padding: 0.75rem 1.4rem;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  background:
+    linear-gradient(var(--ink), var(--ink)) padding-box,
+    var(--line) border-box;
+}
+.portfolio-filter:hover,
+.portfolio-filter.on {
+  color: var(--bone);
+  background:
+    linear-gradient(var(--ink-soft), var(--ink-soft)) padding-box,
+    var(--gradient-gold) border-box;
+}
+.grid-projects .card.is-hidden { display: none; }
 
 /* ---------- Gallery (project pages) ---------- */
 .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(0.8rem, 1.6vw, 1.5rem); }

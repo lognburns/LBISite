@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Services | Lauren Burns Interiors</title>
-<meta name="description" content="Interior design services by Lauren Burns Interiors — new construction, renovation and remodel design, full furnishing and styling, space planning, and virtual design nationwide.">
+<meta name="description" content="Interior design services by Lauren Burns Interiors, new construction, renovation and remodel design, full furnishing and styling, space planning, and virtual design nationwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   Lauren Burns Interiors — Editorial Dark System
+   Lauren Burns Interiors - Editorial Dark System
    Palette: warm ink, bone cream, muted brass
    Type: Cormorant Garamond (display) / Manrope (utility+body)
    ============================================================ */
@@ -20,7 +20,7 @@
   --ink-soft: #1f1b15;     /* raised panels */
   --bone: #efe9df;         /* primary text on dark */
   --bone-dim: #b9b1a3;     /* secondary text */
-  --brass: #a8865a;        /* accent — rules, eyebrows, hover */
+  --brass: #a8865a;        /* accent: rules, eyebrows, hover */
   --gold: #c9a86a;         /* logo champagne */
   --gold-light: #e2c98e;
   --gold-dim: rgba(201, 168, 106, 0.42);
@@ -30,6 +30,7 @@
   --line: rgba(239, 233, 223, 0.14);
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-utility: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --font-brand: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   --pad: clamp(1.25rem, 4vw, 4rem);
   --nav-h: 5rem;
 }
@@ -215,12 +216,16 @@ a { color: inherit; text-decoration: none; }
   height: 4rem;
   width: auto;
 }
-.footer .brand-name { font-size: 1.7rem; }
+.footer .brand-name { font-size: 1.35rem; }
 .brand-name {
-  font-family: var(--font-display);
-  font-size: 1.45rem; font-weight: 500; letter-spacing: 0.05em;
+  font-family: var(--font-brand);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: uppercase;
 }
 .brand-sub {
+  font-family: var(--font-brand);
   font-size: 0.5625rem; font-weight: 500;
   letter-spacing: 0.5em; text-transform: uppercase; color: var(--bone-dim);
 }
@@ -368,6 +373,37 @@ a { color: inherit; text-decoration: none; }
 .card:hover .frame img { transform: scale(1.04); }
 .card .meta { display: flex; flex-direction: column; gap: 0.3rem; }
 @media (max-width: 720px) { .grid-projects { grid-template-columns: 1fr; } }
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 3rem;
+}
+.portfolio-filter {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--bone-dim);
+  cursor: pointer;
+  font-family: var(--font-utility);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  padding: 0.75rem 1.4rem;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  background:
+    linear-gradient(var(--ink), var(--ink)) padding-box,
+    var(--line) border-box;
+}
+.portfolio-filter:hover,
+.portfolio-filter.on {
+  color: var(--bone);
+  background:
+    linear-gradient(var(--ink-soft), var(--ink-soft)) padding-box,
+    var(--gradient-gold) border-box;
+}
+.grid-projects .card.is-hidden { display: none; }
 
 /* ---------- Gallery (project pages) ---------- */
 .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(0.8rem, 1.6vw, 1.5rem); }
@@ -531,7 +567,7 @@ textarea { resize: vertical; min-height: 7rem; }
     <p class="lede reveal" style="max-width:46ch; margin-bottom:4rem;">From new construction to full furnishing, every engagement is guided by intention, cohesion, and clear communication.</p>
     <div class="service-row reveal">
       <h3 class="display-md">New Construction & Finish Selections</h3>
-      <p class="muted">From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike — countertops, cabinetry, tile, lighting, flooring, exterior materials, paint, and stains — organized and submitted on schedule for a seamless build.</p>
+      <p class="muted">From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike, countertops, cabinetry, tile, lighting, flooring, exterior materials, paint, and stains, organized and submitted on schedule for a seamless build.</p>
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Renovation & Remodel Design</h3>
@@ -539,15 +575,15 @@ textarea { resize: vertical; min-height: 7rem; }
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Full Furnishings & Styling</h3>
-      <p class="muted">A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories — curated, procured, and installed to create a polished, livable result that feels both elevated and personal.</p>
+      <p class="muted">A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories, curated, procured, and installed to create a polished, livable result that feels both elevated and personal.</p>
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Space Planning, Furniture & Procurement</h3>
-      <p class="muted">Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully — both functionally and aesthetically.</p>
+      <p class="muted">Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully, both functionally and aesthetically.</p>
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Virtual & National Design</h3>
-      <p class="muted">Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience — wherever you are.</p>
+      <p class="muted">Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience, wherever you are.</p>
     </div>
   </div>
 </section>
@@ -566,7 +602,7 @@ textarea { resize: vertical; min-height: 7rem; }
       <img class="footer-logo" src="images/logo.png" alt="" width="64" height="64">
     <span class="brand-text">
       <span class="brand-name">Lauren Burns</span>
-      <span class="brand-sub">Interiors &mdash; Raleigh, NC</span>
+      <span class="brand-sub">Interiors, Raleigh, NC</span>
     </span>
     </div>
       <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless interiors, elevated living. Residential and commercial design across the Triangle and nationwide.</p>
@@ -592,7 +628,7 @@ textarea { resize: vertical; min-height: 7rem; }
     <div>
       <h4>Recognition</h4>
       <ul>
-        <li><a href="press.html">Best Interior Design Firm &mdash; Maggy Awards, 2020&ndash;2025</a></li>
+        <li><a href="press.html">Best Interior Design Firm, Maggy Awards, 2020&ndash;2025</a></li>
         <li><a href="press.html">5 West Diamond Awards Gold, 2026</a></li>
       </ul>
     </div>
@@ -640,6 +676,24 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+// Portfolio filters
+const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+const portfolioCards = document.querySelectorAll('.grid-projects .card[data-type]');
+if (portfolioFilters.length && portfolioCards.length) {
+  portfolioFilters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      portfolioFilters.forEach((b) => {
+        b.classList.toggle('on', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      portfolioCards.forEach((card) => {
+        card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.type !== filter);
+      });
+    });
+  });
+}
 
 </script>
 </body>

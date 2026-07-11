@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>About | Lauren Burns Interiors</title>
-<meta name="description" content="Meet the team behind Lauren Burns Interiors — full-service residential and commercial interior design in Raleigh, NC.">
+<meta name="description" content="Meet the team behind Lauren Burns Interiors, full-service residential and commercial interior design in Raleigh, NC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   Lauren Burns Interiors — Editorial Dark System
+   Lauren Burns Interiors - Editorial Dark System
    Palette: warm ink, bone cream, muted brass
    Type: Cormorant Garamond (display) / Manrope (utility+body)
    ============================================================ */
@@ -20,7 +20,7 @@
   --ink-soft: #1f1b15;     /* raised panels */
   --bone: #efe9df;         /* primary text on dark */
   --bone-dim: #b9b1a3;     /* secondary text */
-  --brass: #a8865a;        /* accent — rules, eyebrows, hover */
+  --brass: #a8865a;        /* accent: rules, eyebrows, hover */
   --gold: #c9a86a;         /* logo champagne */
   --gold-light: #e2c98e;
   --gold-dim: rgba(201, 168, 106, 0.42);
@@ -30,6 +30,7 @@
   --line: rgba(239, 233, 223, 0.14);
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-utility: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --font-brand: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   --pad: clamp(1.25rem, 4vw, 4rem);
   --nav-h: 5rem;
 }
@@ -215,12 +216,16 @@ a { color: inherit; text-decoration: none; }
   height: 4rem;
   width: auto;
 }
-.footer .brand-name { font-size: 1.7rem; }
+.footer .brand-name { font-size: 1.35rem; }
 .brand-name {
-  font-family: var(--font-display);
-  font-size: 1.45rem; font-weight: 500; letter-spacing: 0.05em;
+  font-family: var(--font-brand);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: uppercase;
 }
 .brand-sub {
+  font-family: var(--font-brand);
   font-size: 0.5625rem; font-weight: 500;
   letter-spacing: 0.5em; text-transform: uppercase; color: var(--bone-dim);
 }
@@ -368,6 +373,37 @@ a { color: inherit; text-decoration: none; }
 .card:hover .frame img { transform: scale(1.04); }
 .card .meta { display: flex; flex-direction: column; gap: 0.3rem; }
 @media (max-width: 720px) { .grid-projects { grid-template-columns: 1fr; } }
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 3rem;
+}
+.portfolio-filter {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--bone-dim);
+  cursor: pointer;
+  font-family: var(--font-utility);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  padding: 0.75rem 1.4rem;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  background:
+    linear-gradient(var(--ink), var(--ink)) padding-box,
+    var(--line) border-box;
+}
+.portfolio-filter:hover,
+.portfolio-filter.on {
+  color: var(--bone);
+  background:
+    linear-gradient(var(--ink-soft), var(--ink-soft)) padding-box,
+    var(--gradient-gold) border-box;
+}
+.grid-projects .card.is-hidden { display: none; }
 
 /* ---------- Gallery (project pages) ---------- */
 .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(0.8rem, 1.6vw, 1.5rem); }
@@ -519,7 +555,7 @@ textarea { resize: vertical; min-height: 7rem; }
 </header>
 <main>
 <section class="page-hero">
-  <div class="bg" style="background-image:url('images/0b75c1_fee480971fe84e58b260f842b8c03450.jpg')"></div>
+  <div class="bg" style="background-image:url('images/0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3.jpg')"></div>
   <div class="hero-caption">
     <span class="eyebrow">About</span>
     <h1 class="display-xl">The Studio</h1>
@@ -528,7 +564,7 @@ textarea { resize: vertical; min-height: 7rem; }
 </section>
 <section class="section">
   <div class="wrap-narrow">
-    <p class="lede reveal" style="margin-bottom:1.5rem;">Great design results from collaboration &mdash; the union that occurs when a client&rsquo;s dreams and a designer&rsquo;s skill come together.</p>
+    <p class="lede reveal" style="margin-bottom:1.5rem;">Great design results from collaboration, the union that occurs when a client&rsquo;s dreams and a designer&rsquo;s skill come together.</p>
     <p class="muted reveal">Lauren Burns Interiors is a full-service interior design firm specializing in residential and commercial design. Our approach is fresh, innovative, and personal, helping you create an inviting, timeless, and functional environment. Whether your dream is a custom-designed home or a creatively remodeled kitchen, we bring the expertise and vision to bring your living spaces to life.</p>
   </div>
 </section>
@@ -539,7 +575,7 @@ textarea { resize: vertical; min-height: 7rem; }
       <div>
         <span class="eyebrow">Owner & Principal Designer</span>
         <h2 class="display-md" style="margin:0.5rem 0 1.2rem;">Lauren Burns</h2>
-        <p class="muted">Lauren Burns designs spaces that are timeless with a masterful mix of styles, from traditional to contemporary. Lauren loves turning spaces that need an overhaul into layered, sophisticated and usable living spaces for clients. She owns her client’s desires for the home, combines them with her passion for design and creates spaces they are proud to live in — spaces that feel effortlessly chic and purposeful. By layering textures, along with mixing new with vintage pieces, she creates signature interiors with sophisticated simplicity. Accompanied by over 10 years of experience in the interior design industry, Lauren uses her expertise to turn her creative vision into your reality.</p>
+        <p class="muted">Lauren Burns designs spaces that are timeless with a masterful mix of styles, from traditional to contemporary. Lauren loves turning spaces that need an overhaul into layered, sophisticated and usable living spaces for clients. She owns her client’s desires for the home, combines them with her passion for design and creates spaces they are proud to live in, spaces that feel effortlessly chic and purposeful. By layering textures, along with mixing new with vintage pieces, she creates signature interiors with sophisticated simplicity. Accompanied by over 10 years of experience in the interior design industry, Lauren uses her expertise to turn her creative vision into your reality.</p>
       </div>
     </div>
     <div class="team-row reveal">
@@ -547,7 +583,7 @@ textarea { resize: vertical; min-height: 7rem; }
       <div>
         <span class="eyebrow">Design Coordinator</span>
         <h2 class="display-md" style="margin:0.5rem 0 1.2rem;">Daniela McShane</h2>
-        <p class="muted">Daniela is the touchpoint for all new client discovery calls and contracts, and assists with project management for our clients throughout the entire design process. Detail oriented and always thinking outside the box when needed, Daniela ensures our clients have a seamless design experience — her kind personality and attention to detail are something clients comment on often.</p>
+        <p class="muted">Daniela is the touchpoint for all new client discovery calls and contracts, and assists with project management for our clients throughout the entire design process. Detail oriented and always thinking outside the box when needed, Daniela ensures our clients have a seamless design experience, her kind personality and attention to detail are something clients comment on often.</p>
       </div>
     </div>
     <div class="team-row reveal">
@@ -555,7 +591,7 @@ textarea { resize: vertical; min-height: 7rem; }
       <div>
         <span class="eyebrow">Design Assistant</span>
         <h2 class="display-md" style="margin:0.5rem 0 1.2rem;">Taylor Weller</h2>
-        <p class="muted">Taylor assists Lauren with presentation prep and behind-the-scenes coordination to help bring each project to life, supporting the team with her talent for organization and strong attention to detail. Her background in digital marketing and her eye for design make her a valuable asset — and her thoughtful communication keeps our brand voice consistent and authentic across every platform.</p>
+        <p class="muted">Taylor assists Lauren with presentation prep and behind-the-scenes coordination to help bring each project to life, supporting the team with her talent for organization and strong attention to detail. Her background in digital marketing and her eye for design make her a valuable asset, and her thoughtful communication keeps our brand voice consistent and authentic across every platform.</p>
       </div>
     </div>
   </div>
@@ -568,7 +604,7 @@ textarea { resize: vertical; min-height: 7rem; }
       <img class="footer-logo" src="images/logo.png" alt="" width="64" height="64">
     <span class="brand-text">
       <span class="brand-name">Lauren Burns</span>
-      <span class="brand-sub">Interiors &mdash; Raleigh, NC</span>
+      <span class="brand-sub">Interiors, Raleigh, NC</span>
     </span>
     </div>
       <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless interiors, elevated living. Residential and commercial design across the Triangle and nationwide.</p>
@@ -594,7 +630,7 @@ textarea { resize: vertical; min-height: 7rem; }
     <div>
       <h4>Recognition</h4>
       <ul>
-        <li><a href="press.html">Best Interior Design Firm &mdash; Maggy Awards, 2020&ndash;2025</a></li>
+        <li><a href="press.html">Best Interior Design Firm, Maggy Awards, 2020&ndash;2025</a></li>
         <li><a href="press.html">5 West Diamond Awards Gold, 2026</a></li>
       </ul>
     </div>
@@ -642,6 +678,24 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+// Portfolio filters
+const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+const portfolioCards = document.querySelectorAll('.grid-projects .card[data-type]');
+if (portfolioFilters.length && portfolioCards.length) {
+  portfolioFilters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      portfolioFilters.forEach((b) => {
+        b.classList.toggle('on', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      portfolioCards.forEach((card) => {
+        card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.type !== filter);
+      });
+    });
+  });
+}
 
 </script>
 </body>

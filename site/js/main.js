@@ -35,3 +35,21 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+// Portfolio filters
+const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+const portfolioCards = document.querySelectorAll('.grid-projects .card[data-type]');
+if (portfolioFilters.length && portfolioCards.length) {
+  portfolioFilters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      portfolioFilters.forEach((b) => {
+        b.classList.toggle('on', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      portfolioCards.forEach((card) => {
+        card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.type !== filter);
+      });
+    });
+  });
+}

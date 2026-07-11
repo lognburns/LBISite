@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Lauren Burns Interiors | Interior Design | Raleigh, NC</title>
-<meta name="description" content="Lauren Burns Interiors designs timeless, layered, sophisticated living spaces — residential and commercial interior design in Raleigh, NC and nationwide.">
+<meta name="description" content="Lauren Burns Interiors designs timeless, layered, sophisticated living spaces, residential and commercial interior design in Raleigh, NC and nationwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   Lauren Burns Interiors — Editorial Dark System
+   Lauren Burns Interiors - Editorial Dark System
    Palette: warm ink, bone cream, muted brass
    Type: Cormorant Garamond (display) / Manrope (utility+body)
    ============================================================ */
@@ -20,7 +20,7 @@
   --ink-soft: #1f1b15;     /* raised panels */
   --bone: #efe9df;         /* primary text on dark */
   --bone-dim: #b9b1a3;     /* secondary text */
-  --brass: #a8865a;        /* accent — rules, eyebrows, hover */
+  --brass: #a8865a;        /* accent: rules, eyebrows, hover */
   --gold: #c9a86a;         /* logo champagne */
   --gold-light: #e2c98e;
   --gold-dim: rgba(201, 168, 106, 0.42);
@@ -30,6 +30,7 @@
   --line: rgba(239, 233, 223, 0.14);
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-utility: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --font-brand: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   --pad: clamp(1.25rem, 4vw, 4rem);
   --nav-h: 5rem;
 }
@@ -215,12 +216,16 @@ a { color: inherit; text-decoration: none; }
   height: 4rem;
   width: auto;
 }
-.footer .brand-name { font-size: 1.7rem; }
+.footer .brand-name { font-size: 1.35rem; }
 .brand-name {
-  font-family: var(--font-display);
-  font-size: 1.45rem; font-weight: 500; letter-spacing: 0.05em;
+  font-family: var(--font-brand);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: uppercase;
 }
 .brand-sub {
+  font-family: var(--font-brand);
   font-size: 0.5625rem; font-weight: 500;
   letter-spacing: 0.5em; text-transform: uppercase; color: var(--bone-dim);
 }
@@ -368,6 +373,37 @@ a { color: inherit; text-decoration: none; }
 .card:hover .frame img { transform: scale(1.04); }
 .card .meta { display: flex; flex-direction: column; gap: 0.3rem; }
 @media (max-width: 720px) { .grid-projects { grid-template-columns: 1fr; } }
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 3rem;
+}
+.portfolio-filter {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--bone-dim);
+  cursor: pointer;
+  font-family: var(--font-utility);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  padding: 0.75rem 1.4rem;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  background:
+    linear-gradient(var(--ink), var(--ink)) padding-box,
+    var(--line) border-box;
+}
+.portfolio-filter:hover,
+.portfolio-filter.on {
+  color: var(--bone);
+  background:
+    linear-gradient(var(--ink-soft), var(--ink-soft)) padding-box,
+    var(--gradient-gold) border-box;
+}
+.grid-projects .card.is-hidden { display: none; }
 
 /* ---------- Gallery (project pages) ---------- */
 .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(0.8rem, 1.6vw, 1.5rem); }
@@ -532,7 +568,7 @@ textarea { resize: vertical; min-height: 7rem; }
 <section class="section">
   <div class="wrap-narrow statement reveal">
     <span class="eyebrow">Lauren Burns Interiors</span>
-    <p class="lede">Timeless interiors, elevated living &mdash; layered, sophisticated spaces shaped around the way you live.</p>
+    <p class="lede">Timeless interiors, elevated living, layered, sophisticated spaces shaped around the way you live.</p>
     <a class="btn" href="about.html">About the Studio</a>
   </div>
 </section>
@@ -564,31 +600,59 @@ textarea { resize: vertical; min-height: 7rem; }
     </div>
     <div class="grid-projects">
     <a class="card reveal" href="projects/custom-luxury.html">
-      <div class="frame"><img src="images/0b75c1_c37943c00feb4dceb0d11ecb2c41ee67.jpg" alt="Custom Luxury — interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="images/0b75c1_c37943c00feb4dceb0d11ecb2c41ee67.jpg" alt="Custom Luxury, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">Private Residential</span>
         <span class="display-md">Custom Luxury</span>
       </div>
     </a>
     <a class="card reveal" href="projects/bold-earthy.html">
-      <div class="frame"><img src="images/0b75c1_9db3879aa591458b8cec814d76fe20a5.jpg" alt="Bold & Earthy — interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="images/0b75c1_9db3879aa591458b8cec814d76fe20a5.jpg" alt="Bold & Earthy, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">Private Residential</span>
         <span class="display-md">Bold & Earthy</span>
       </div>
     </a>
     <a class="card reveal" href="projects/organic-sophistication.html">
-      <div class="frame"><img src="images/0b75c1_fee480971fe84e58b260f842b8c03450.jpg" alt="Organic Sophistication — interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="images/0b75c1_fee480971fe84e58b260f842b8c03450.jpg" alt="Organic Sophistication, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">Private Residential</span>
         <span class="display-md">Organic Sophistication</span>
       </div>
     </a>
     <a class="card reveal" href="projects/sophisticated-chic.html">
-      <div class="frame"><img src="images/0b75c1_34df603a7fc84393b0f12c51d26a4f42.jpg" alt="Sophisticated Chic — interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="images/0b75c1_34df603a7fc84393b0f12c51d26a4f42.jpg" alt="Sophisticated Chic, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">Private Residential</span>
         <span class="display-md">Sophisticated Chic</span>
+      </div>
+    </a>
+    <a class="card reveal" href="projects/beach-serenity.html">
+      <div class="frame"><img src="images/0b75c1_7a83ba69f68747bf8ade1cf08d139c23.jpg" alt="Beach Serenity, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="meta">
+        <span class="eyebrow">Private Residential</span>
+        <span class="display-md">Beach Serenity</span>
+      </div>
+    </a>
+    <a class="card reveal" href="projects/kitchen-refresh.html">
+      <div class="frame"><img src="images/0b75c1_d3a63e0e3dbc4de492078a743df39282.jpg" alt="Kitchen Refresh, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="meta">
+        <span class="eyebrow">Private Residential</span>
+        <span class="display-md">Kitchen Refresh</span>
+      </div>
+    </a>
+    <a class="card reveal" href="projects/midcentury-modern.html">
+      <div class="frame"><img src="images/0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3.jpg" alt="Mid-Century Modern, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="meta">
+        <span class="eyebrow">Private Residential</span>
+        <span class="display-md">Mid-Century Modern</span>
+      </div>
+    </a>
+    <a class="card reveal" href="projects/cozy-and-classic.html">
+      <div class="frame"><img src="images/0b75c1_c8fe9ef7bb404fb090c9fccee373ab85.jpg" alt="Cozy & Classic, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="meta">
+        <span class="eyebrow">Private Residential</span>
+        <span class="display-md">Cozy & Classic</span>
       </div>
     </a>
     </div>
@@ -598,7 +662,7 @@ textarea { resize: vertical; min-height: 7rem; }
 <section class="section">
   <div class="wrap-narrow statement reveal">
     <span class="eyebrow">Recognition</span>
-    <p class="lede">Voted Best Interior Design Firm &mdash; Cary Magazine Maggy Awards, six consecutive years.</p>
+    <p class="lede">Voted Best Interior Design Firm, Cary Magazine Maggy Awards, six consecutive years.</p>
     <a class="btn" href="press.html">Press &amp; Awards</a>
   </div>
 </section>
@@ -610,7 +674,7 @@ textarea { resize: vertical; min-height: 7rem; }
       <img class="footer-logo" src="images/logo.png" alt="" width="64" height="64">
     <span class="brand-text">
       <span class="brand-name">Lauren Burns</span>
-      <span class="brand-sub">Interiors &mdash; Raleigh, NC</span>
+      <span class="brand-sub">Interiors, Raleigh, NC</span>
     </span>
     </div>
       <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless interiors, elevated living. Residential and commercial design across the Triangle and nationwide.</p>
@@ -636,7 +700,7 @@ textarea { resize: vertical; min-height: 7rem; }
     <div>
       <h4>Recognition</h4>
       <ul>
-        <li><a href="press.html">Best Interior Design Firm &mdash; Maggy Awards, 2020&ndash;2025</a></li>
+        <li><a href="press.html">Best Interior Design Firm, Maggy Awards, 2020&ndash;2025</a></li>
         <li><a href="press.html">5 West Diamond Awards Gold, 2026</a></li>
       </ul>
     </div>
@@ -684,6 +748,24 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+// Portfolio filters
+const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+const portfolioCards = document.querySelectorAll('.grid-projects .card[data-type]');
+if (portfolioFilters.length && portfolioCards.length) {
+  portfolioFilters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      portfolioFilters.forEach((b) => {
+        b.classList.toggle('on', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      portfolioCards.forEach((card) => {
+        card.classList.toggle('is-hidden', filter !== 'all' && card.dataset.type !== filter);
+      });
+    });
+  });
+}
 
 </script>
 </body>

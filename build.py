@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lauren Burns Interiors — static site generator.
+"""Lauren Burns Interiors, static site generator.
 Run:  python3 build.py   (writes HTML into ./site)
 Add projects by appending to PROJECTS below and rebuilding.
 """
@@ -19,11 +19,21 @@ def img(img_id, depth=0, ext="jpg"):
     prefix = "../" * depth
     return f"{prefix}{IMG_DIR}/{img_id}.{ext}"
 
+def parse_image(entry):
+    if len(entry) == 2:
+        return entry[0], entry[1], "jpg"
+    return entry[0], entry[1], entry[2]
+
+def thumb_src(pr, depth=0):
+    iid, _, ext = parse_image(pr["images"][0])
+    return img(iid, depth, ext)
+
 # ---------------------------------------------------------------- projects
 PROJECTS = [
     {
-        "slug": "custom-luxury", "title": "Custom Luxury", "cat": "Private Residential",
-        "blurb": "Layered blues and tailored millwork give this residence a quietly grand register — classic forms, modern restraint.",
+        "slug": "custom-luxury", "title": "Custom Luxury", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Layered blues and tailored millwork give this residence a quietly grand register, classic forms, modern restraint.",
         "images": [
             ("0b75c1_c37943c00feb4dceb0d11ecb2c41ee67", "g-w"),
             ("0b75c1_58c32e8abd9a4643b9579dfb7c65ceb0", "g-t"),
@@ -34,8 +44,9 @@ PROJECTS = [
         ],
     },
     {
-        "slug": "bold-earthy", "title": "Bold & Earthy", "cat": "Private Residential",
-        "blurb": "Grounded tones, natural texture, and confident contrast — a home that feels rooted and unmistakably lived-in.",
+        "slug": "bold-earthy", "title": "Bold & Earthy", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Grounded tones, natural texture, and confident contrast, a home that feels rooted and unmistakably lived-in.",
         "images": [
             ("0b75c1_9db3879aa591458b8cec814d76fe20a5", "g-w"),
             ("0b75c1_4b851c81be954ff0bc8e5b1c5eb6ba55", "g-t"),
@@ -48,8 +59,9 @@ PROJECTS = [
         ],
     },
     {
-        "slug": "organic-sophistication", "title": "Organic Sophistication", "cat": "Private Residential",
-        "blurb": "Soft neutrals and organic materials in easy conversation — sophistication without a hint of effort.",
+        "slug": "organic-sophistication", "title": "Organic Sophistication", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Soft neutrals and organic materials in easy conversation, sophistication without a hint of effort.",
         "images": [
             ("0b75c1_fee480971fe84e58b260f842b8c03450", "g-w"),
             ("0b75c1_ca4e7cecf0934ed2b3c1cdbd0f4c5c93", "g-t"),
@@ -60,8 +72,9 @@ PROJECTS = [
         ],
     },
     {
-        "slug": "sophisticated-chic", "title": "Sophisticated Chic", "cat": "Private Residential",
-        "blurb": "Polished finishes and a disciplined palette — chic that reads as timeless rather than trend.",
+        "slug": "sophisticated-chic", "title": "Sophisticated Chic", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Polished finishes and a disciplined palette, chic that reads as timeless rather than trend.",
         "images": [
             ("0b75c1_34df603a7fc84393b0f12c51d26a4f42", "g-s"),
             ("0b75c1_3e288df7304f4d94ad9f14a47f7f5bb2", "g-s"),
@@ -77,6 +90,169 @@ PROJECTS = [
             ("0b75c1_e655539cefd949edb167527fbd7b4547", "g-s"),
         ],
     },
+    {
+        "slug": "beach-serenity", "title": "Beach Serenity", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Soft coastal palettes and relaxed furnishings create an easy, sun-washed retreat by the water.",
+        "images": [
+            ("0b75c1_7a83ba69f68747bf8ade1cf08d139c23", "g-w"),
+            ("0b75c1_93512257112946baba918d2ad30b4c3b", "g-h"),
+            ("0b75c1_d0eac6881d4b48218d4bd7420fb52231", "g-h"),
+            ("0b75c1_024e115f12f94b0cbbfe6c1dbcd52f33", "g-w"),
+            ("0b75c1_0063ee62120649fe800e48189af850bc", "g-w"),
+            ("0b75c1_48b790d6100742d7b4cc965cb006a6e9", "g-t"),
+            ("0b75c1_be2331537925414ca1db27888b21c00e", "g-h"),
+            ("0b75c1_a9a463b0e7eb47d89ab4a48c8568db96", "g-h"),
+            ("0b75c1_d3bc2c9f993f43e789364196bd9d23b8", "g-w"),
+            ("0b75c1_1e836562908e4c45b610f2e2955e0287", "g-h"),
+            ("0b75c1_298c17af92cf44cba31018f7d199491c", "g-t"),
+            ("0b75c1_070109fada444725beea6d9b75fe39f3", "g-t"),
+            ("0b75c1_6a9b7f2dbbe64f9888ebaa3b4d9a71e3", "g-w"),
+            ("0b75c1_d773f6c503ef44b99ccb70d3ec14c7a7", "g-t"),
+            ("0b75c1_fdbec05b86d740fe9851adea969804ec", "g-w"),
+            ("0b75c1_e5fffacd552242c78b778865badd0382", "g-t"),
+            ("0b75c1_8fa2467c47254822850eec4859140f7d", "g-w"),
+            ("0b75c1_eac8d9df7f874a2496f4550ba2dfbebd", "g-t"),
+            ("0b75c1_f5ee1cc5c0784c1cbdb498f0cead7e4f", "g-t"),
+            ("0b75c1_7b729ab3a10245698c48f18337d8f785", "g-w"),
+            ("0b75c1_2252de11440b47ccb29c15937eabaec8", "g-w"),
+            ("0b75c1_2334963c305149408b844e6cc0becc14", "g-t"),
+            ("0b75c1_990371574776442aab312603e4b096cd", "g-h"),
+            ("0b75c1_266064f6076542ccbb916629110f26b7", "g-h"),
+            ("0b75c1_3a35f6ccd0974e4288db06c570863c53", "g-w"),
+        ],
+    },
+    {
+        "slug": "kitchen-refresh", "title": "Kitchen Refresh", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "A thoughtful kitchen update, new finishes, improved flow, and details that make everyday cooking feel effortless.",
+        "images": [
+            ("0b75c1_d3a63e0e3dbc4de492078a743df39282", "g-s"),
+            ("0b75c1_676ec7713c544b529b0d51b30c4c7aea", "g-s"),
+            ("0b75c1_290c055250354148b727096c55085c80", "g-s"),
+            ("0b75c1_e0a7f2884e3c494dac0d93b99c9b1f13", "g-s"),
+            ("0b75c1_223d948238024272af5346c5199abc8a", "g-s"),
+            ("0b75c1_a34ac371433b43fd960241c18d6d93f1", "g-s"),
+            ("0b75c1_afdff7c4014b4ba096759e2ffd2aa4ba", "g-s"),
+            ("0b75c1_ab7f84847212458cb57e47f0e55e06ca", "g-s"),
+            ("0b75c1_1eb28ea8716d4fe4a6ca3e85e7c3959a", "g-s"),
+            ("0b75c1_e105b4a490d040d29cc1c921fc2a9bdf", "g-s"),
+        ],
+    },
+    {
+        "slug": "midcentury-modern", "title": "Mid-Century Modern", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Clean lines, warm woods, and iconic forms, a mid-century spirit updated for contemporary living.",
+        "images": [
+            ("0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3", "g-t"),
+            ("0b75c1_be0f9d44ec6f47628be324751186ea55", "g-t"),
+            ("0b75c1_c1a9e9c29b24481c83e8485bfea1317d", "g-t"),
+            ("0b75c1_082dbb3338ac4ee4968d19099691a482", "g-t"),
+            ("0b75c1_166c812eb92a45e7944ee235f8861ac1", "g-w"),
+            ("0b75c1_1d4e39534dcc4a1d844fa9216a985f9d", "g-w"),
+            ("0b75c1_885c5109aa6b4f15b9ea5011e1ee1006", "g-t"),
+            ("0b75c1_6263498fc89d4bffba6971a635302a6d", "g-w"),
+            ("0b75c1_cb420fc52fee4be8b7ebd565e9bb9f3c", "g-w"),
+        ],
+    },
+    {
+        "slug": "cozy-and-classic", "title": "Cozy & Classic", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Traditional details and layered comfort combine for a home that feels welcoming, polished, and timeless.",
+        "images": [
+            ("0b75c1_c8fe9ef7bb404fb090c9fccee373ab85", "g-t"),
+            ("0b75c1_b172ec7ab5d44ffd9797e858ec841e36", "g-w"),
+            ("0b75c1_53bdbfa00d76477fb6e7a4da0e9f8bf4", "g-h"),
+            ("0b75c1_8eabd51d7c0c4b48959b7ca447c6888a", "g-h"),
+            ("0b75c1_6f44a95d7eb044f2b84b98cbbd910f0b", "g-t"),
+            ("0b75c1_d14a56d355de4038bdb5ca95406ce190", "g-w"),
+            ("0b75c1_3252a1ceee80484db3429622285d3c6e", "g-h"),
+            ("0b75c1_320d427f58e6470c9f4938ca1a832a38", "g-h"),
+            ("0b75c1_4137756485ab4cfca1547d9c96159d3a", "g-h"),
+            ("0b75c1_b84d351f0d2f46e7a0cd2db5fb04711a", "g-h"),
+            ("0b75c1_3cc4ca0d81204f38bac8e6d9f8fed405", "g-t"),
+            ("0b75c1_0a402f462d4d45a9a3ebb28eb5cd9a09", "g-w"),
+            ("0b75c1_1503814c71344d73a29895f0c7c3aed3", "g-t"),
+            ("0b75c1_8f9378f82e6d4bf4a64bdad4713204e3", "g-w"),
+            ("0b75c1_d62975470e4541939453e828735aea0c", "g-t"),
+            ("0b75c1_2fc2e6f164204980b629f94674084cc0", "g-w"),
+            ("0b75c1_cda92924cb8a45d8a88c043917d9c69c", "g-t"),
+            ("0b75c1_67f0f65a2dc340668cb55aae233cfe68", "g-t"),
+        ],
+    },
+    {
+        "slug": "wake-plastic-surgery", "title": "Wake Plastic Surgery", "type": "commercial",
+        "cat": "Cary, NC",
+        "blurb": "A refined clinical environment designed to feel calm, welcoming, and tailored to the patient experience.",
+        "images": [
+            ("0b75c1_f6fcaa68d13d4b06a6831fba401dcecc", "g-s"),
+            ("0b75c1_de73f01886e9420b80a82b3dfefa6064", "g-s"),
+            ("0b75c1_2300359013ce461d9dd5929221772621", "g-s"),
+            ("0b75c1_3d3adcc52cc84c34bc0a580ebbb3caa8", "g-s"),
+            ("0b75c1_a4b0cbf00ef04fb5b3287e1c48d35ee4", "g-s"),
+            ("0b75c1_291efff2ebda417f81cc71f685ca04c9", "g-s"),
+            ("0b75c1_0c8c4541bd9440ba9f90d2871104e755", "g-s"),
+            ("0b75c1_3504cbff0a7b4e23af5f24b95fe016bf", "g-s"),
+            ("0b75c1_4a5f498adf824a209d589a35a2c0ef29", "g-s"),
+            ("0b75c1_198f99c8a12b4064bd249a1aa5128987", "g-s"),
+            ("0b75c1_0c5a51a6288e4251965f069e0376c8bd", "g-s"),
+            ("0b75c1_aa2e476fc94a480797edd8359d8af772", "g-s"),
+            ("0b75c1_89267c96ee004e2bb52a1df584799b28", "g-s"),
+            ("0b75c1_cf4f5704d8e14a34bbc2528cbd48fbe7", "g-s"),
+            ("0b75c1_eed762755cf3469ab093c2c4cc3b7256", "g-s"),
+            ("0b75c1_ce6b1492bcd94fbfb168b8f6a4037c11", "g-s"),
+            ("0b75c1_d70a8a41808d4b87b73322221a11d3c3", "g-s"),
+        ],
+    },
+    {
+        "slug": "trex", "title": "Trex", "type": "commercial",
+        "cat": "Los Angeles, CA",
+        "blurb": "Prop styling for Trex through Karma Agency. Photography by Catherine Nguyen.",
+        "images": [
+            ("0b75c1_24a500c9a74846899bb02f0032002389", "g-s", "jpeg"),
+            ("0b75c1_3a64b5cc36584091a08082c66131c4c9", "g-s", "jpeg"),
+            ("0b75c1_f41f61e939fd40e7b6779d7ca6d6ea89", "g-s", "jpeg"),
+            ("0b75c1_f628815c10d644248b88ac57d2e7d373", "g-s", "jpeg"),
+            ("0b75c1_9abb33e0a6df4d348fdfe50b714f2e85", "g-s", "jpeg"),
+        ],
+    },
+    {
+        "slug": "halo-hair-boutique", "title": "Halo Hair Boutique", "type": "commercial",
+        "cat": "Cary, NC",
+        "blurb": "A light-filled salon boutique designed for ease, style, and the everyday rhythm of a busy studio.",
+        "images": [
+            ("0b75c1_74897023de6a4e058a6ca6c169b14eb7", "g-t"),
+            ("0b75c1_eef328a57e65400bae803430fcf25f58", "g-t"),
+            ("0b75c1_4747e6cd9c56469c9e017aa6002aac71", "g-t"),
+            ("0b75c1_4c29ddebf5854f849c41fe1a51b8cbb5", "g-s"),
+            ("0b75c1_f817b57d2d934a8c8e0d04e828d97371", "g-s"),
+            ("0b75c1_1173253c80184b79b42f521c5c39e63c", "g-w"),
+            ("0b75c1_8c6e98ccaf26405686fbce28d45fb666", "g-t"),
+        ],
+    },
+    {
+        "slug": "zest-sushi", "title": "Zest Sushi & Small Plates", "type": "commercial",
+        "cat": "Cary, NC",
+        "blurb": "Warm wood tones and layered texture bring intimate energy to this Cary dining destination.",
+        "images": [
+            ("0b75c1_b164b4af0ea04dd0820bb66ae8de3736", "g-t", "png"),
+            ("0b75c1_4c501a9d61d6441ebca9c24eb6a42972", "g-t", "png"),
+            ("0b75c1_f597a99668484d279f9f1e8219660b2f", "g-t", "png"),
+            ("0b75c1_0d23b92e4cb64385ac13772a7d298e76", "g-t", "png"),
+        ],
+    },
+    {
+        "slug": "ssi-strategy", "title": "SSI Strategy", "type": "commercial",
+        "cat": "Parsippany, NJ",
+        "blurb": "A professional headquarters with a confident palette and purposeful space planning.",
+        "images": [
+            ("0b75c1_5f343a32cc5847979d2f23417f947833", "g-w"),
+            ("0b75c1_caa7dd77cfce4b4e98f80aee306b783f", "g-t", "png"),
+            ("0b75c1_f090b49e581f4c8bb5c2487c70843232", "g-w", "jpeg"),
+            ("0b75c1_331aa00cb91641a7b78790bbff354aee", "g-w"),
+            ("0b75c1_4ea1b3e727c74020a3c67d3b405bb3f9", "g-w"),
+        ],
+    },
 ]
 
 HERO_SLIDES = [
@@ -87,57 +263,60 @@ HERO_SLIDES = [
 
 SERVICES = [
     ("New Construction & Finish Selections",
-     "From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike — countertops, cabinetry, tile, lighting, flooring, exterior materials, paint, and stains — organized and submitted on schedule for a seamless build."),
+     "From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike, countertops, cabinetry, tile, lighting, flooring, exterior materials, paint, and stains, organized and submitted on schedule for a seamless build."),
     ("Renovation & Remodel Design",
      "Redesigning a kitchen, bath, or entire home? We collaborate closely with you and your general contractor to ensure thoughtful design, clear communication, and timely execution. From space planning and renderings to finish selections and project coordination, we manage the design process from start to completion."),
     ("Full Furnishings & Styling",
-     "A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories — curated, procured, and installed to create a polished, livable result that feels both elevated and personal."),
+     "A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories, curated, procured, and installed to create a polished, livable result that feels both elevated and personal."),
     ("Space Planning, Furniture & Procurement",
-     "Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully — both functionally and aesthetically."),
+     "Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully, both functionally and aesthetically."),
     ("Virtual & National Design",
-     "Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience — wherever you are."),
+     "Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience, wherever you are."),
 ]
 
 TEAM = [
     ("Lauren Burns", "Owner & Principal Designer", "0b75c1_a254cabfc36d4db7bd16f7b004497910", "jpg",
-     "Lauren Burns designs spaces that are timeless with a masterful mix of styles, from traditional to contemporary. Lauren loves turning spaces that need an overhaul into layered, sophisticated and usable living spaces for clients. She owns her client\u2019s desires for the home, combines them with her passion for design and creates spaces they are proud to live in \u2014 spaces that feel effortlessly chic and purposeful. By layering textures, along with mixing new with vintage pieces, she creates signature interiors with sophisticated simplicity. Accompanied by over 10 years of experience in the interior design industry, Lauren uses her expertise to turn her creative vision into your reality."),
+     "Lauren Burns designs spaces that are timeless with a masterful mix of styles, from traditional to contemporary. Lauren loves turning spaces that need an overhaul into layered, sophisticated and usable living spaces for clients. She owns her client\u2019s desires for the home, combines them with her passion for design and creates spaces they are proud to live in, spaces that feel effortlessly chic and purposeful. By layering textures, along with mixing new with vintage pieces, she creates signature interiors with sophisticated simplicity. Accompanied by over 10 years of experience in the interior design industry, Lauren uses her expertise to turn her creative vision into your reality."),
     ("Daniela McShane", "Design Coordinator", "0b75c1_e81a52b91d594af0934736df6c80d7f8", "jpg",
-     "Daniela is the touchpoint for all new client discovery calls and contracts, and assists with project management for our clients throughout the entire design process. Detail oriented and always thinking outside the box when needed, Daniela ensures our clients have a seamless design experience \u2014 her kind personality and attention to detail are something clients comment on often."),
+     "Daniela is the touchpoint for all new client discovery calls and contracts, and assists with project management for our clients throughout the entire design process. Detail oriented and always thinking outside the box when needed, Daniela ensures our clients have a seamless design experience, her kind personality and attention to detail are something clients comment on often."),
     ("Taylor Weller", "Design Assistant", "0b75c1_3c5ad5204ba94cca921e382830e0d4d6", "jpeg",
-     "Taylor assists Lauren with presentation prep and behind-the-scenes coordination to help bring each project to life, supporting the team with her talent for organization and strong attention to detail. Her background in digital marketing and her eye for design make her a valuable asset \u2014 and her thoughtful communication keeps our brand voice consistent and authentic across every platform."),
+     "Taylor assists Lauren with presentation prep and behind-the-scenes coordination to help bring each project to life, supporting the team with her talent for organization and strong attention to detail. Her background in digital marketing and her eye for design make her a valuable asset, and her thoughtful communication keeps our brand voice consistent and authentic across every platform."),
 ]
 
 AWARDS = [
-    ("2026", "5 West Magazine Diamond Awards \u2014 Best Interior Design Firm, Gold"),
-    ("2025", "Cary Magazine Maggy Awards \u2014 Best Interior Design Firm, Winner"),
-    ("2024", "Cary Magazine Maggy Awards \u2014 Best Interior Design Firm, Winner"),
-    ("2023", "Cary Magazine Maggy Awards \u2014 Best Interior Design Firm, Winner"),
-    ("2022", "Cary Magazine Maggy Awards \u2014 Best Interior Design Firm, Winner"),
-    ("2021", "Cary Magazine Maggy Awards \u2014 Best Interior Design Firm, Winner"),
-    ("2020", "Cary Magazine Maggy Awards \u2014 Best Interior Design Firm, Winner"),
-    ("2016", "Triangle Downtowner Magazine \u2014 Best of Downtowner Award"),
-    ("2016", "Triangle Downtowner Magazine \u2014 Reader Favorites Award"),
+    ("2026", "Influential Women of Wake, Lauren Burns"),
+    ("2026", "Cary Magazine Maggy Awards, Best Interior Design Firm, Winner"),
+    ("2026", "5 West Magazine Diamond Awards, Best Interior Design Firm, Gold"),
+    ("2025", "Cary Magazine Maggy Awards, Best Interior Design Firm, Winner"),
+    ("2024", "Cary Magazine Maggy Awards, Best Interior Design Firm, Winner"),
+    ("2023", "Cary Magazine Maggy Awards, Best Interior Design Firm, Winner"),
+    ("2022", "Cary Magazine Maggy Awards, Best Interior Design Firm, Winner"),
+    ("2021", "Cary Magazine Maggy Awards, Best Interior Design Firm, Winner"),
+    ("2020", "Cary Magazine Maggy Awards, Best Interior Design Firm, Winner"),
+    ("2016", "Triangle Downtowner Magazine, Best of Downtowner Award"),
+    ("2016", "Triangle Downtowner Magazine, Reader Favorites Award"),
 ]
 
 FEATURES = [
-    ("2025", "Home Design & Decor Magazine \u2014 Kitchen & Bath"),
-    ("2025", "Home Design & Decor Magazine \u2014 Interior Designers of the Carolinas"),
-    ("2024", "Home Design & Decor Magazine \u2014 Interior Designers of the Carolinas"),
-    ("2022", "Home Design & Decor Magazine \u2014 Design Board"),
+    ("2026", "Midtown Magazine, Curated Comfort"),
+    ("2025", "Home Design & Decor Magazine, Kitchen & Bath"),
+    ("2025", "Home Design & Decor Magazine, Interior Designers of the Carolinas"),
+    ("2024", "Home Design & Decor Magazine, Interior Designers of the Carolinas"),
+    ("2022", "Home Design & Decor Magazine, Design Board"),
     ("2022", "Ngala Trading Product Catalogue, Fall 2022\u2013Winter 2023"),
-    ("2021", "Home Design & Decor Magazine \u2014 Designers at Home, Cover Feature"),
-    ("2021", "Voyage Raleigh \u2014 Exploring Life & Business with Lauren Burns"),
-    ("2021", "Voyage Raleigh \u2014 @highpointmarket Instagram Takeover"),
-    ("2019", "Cary Lifestyle \u2014 A Very Cary Christmas"),
-    ("2019", "Cary Lifestyle \u2014 Mid-Century Modern Meets Industrial Sleek"),
-    ("2019", "Cary Lifestyle \u2014 Women Blazing Trails in Cary"),
-    ("2019", "Charlotte Observer \u2014 Designer Spotlight"),
-    ("2019", "Raleigh News & Observer \u2014 Designer Spotlight"),
-    ("2018", "Walter Magazine \u2014 Story of a House"),
-    ("2017", "Walter Magazine \u2014 Story of a House"),
-    ("2017", "Cary Magazine \u2014 A Fresh Perspective"),
-    ("2016", "Karen Saks \u2014 Designer of the Month"),
-    ("2015", "Cary Magazine \u2014 Hanging Out At Home"),
+    ("2021", "Home Design & Decor Magazine, Designers at Home, Cover Feature"),
+    ("2021", "Voyage Raleigh, Exploring Life & Business with Lauren Burns"),
+    ("2021", "Voyage Raleigh, @highpointmarket Instagram Takeover"),
+    ("2019", "Cary Lifestyle, A Very Cary Christmas"),
+    ("2019", "Cary Lifestyle, Mid-Century Modern Meets Industrial Sleek"),
+    ("2019", "Cary Lifestyle, Women Blazing Trails in Cary"),
+    ("2019", "Charlotte Observer, Designer Spotlight"),
+    ("2019", "Raleigh News & Observer, Designer Spotlight"),
+    ("2018", "Walter Magazine, Story of a House"),
+    ("2017", "Walter Magazine, Story of a House"),
+    ("2017", "Cary Magazine, A Fresh Perspective"),
+    ("2016", "Karen Saks, Designer of the Month"),
+    ("2015", "Cary Magazine, Hanging Out At Home"),
 ]
 
 PHONE = "(919) 818-5683"
@@ -148,8 +327,9 @@ def all_images():
     """Every (img_id, ext) pair referenced by the site."""
     seen = {}
     for pr in PROJECTS:
-        for img_id, _ in pr["images"]:
-            seen.setdefault(img_id, "jpg")
+        for entry in pr["images"]:
+            iid, _, ext = parse_image(entry)
+            seen[iid] = ext
     for img_id, _, _ in HERO_SLIDES:
         seen.setdefault(img_id, "jpg")
     for _, _, img_id, ext, _ in TEAM:
@@ -181,7 +361,7 @@ def download_images():
 def brand_block(depth=0, footer=False):
     p = "../" * depth
     logo_src = img("logo", depth, "png")
-    sub = "Interiors &mdash; Raleigh, NC" if footer else "Interiors"
+    sub = "Interiors, Raleigh, NC" if footer else "Interiors"
     text = f"""    <span class="brand-text">
       <span class="brand-name">Lauren Burns</span>
       <span class="brand-sub">{sub}</span>
@@ -244,7 +424,7 @@ def footer(depth=0):
     <div>
       <h4>Recognition</h4>
       <ul>
-        <li><a href="{p}press.html">Best Interior Design Firm &mdash; Maggy Awards, 2020&ndash;2025</a></li>
+        <li><a href="{p}press.html">Best Interior Design Firm, Maggy Awards, 2020&ndash;2025</a></li>
         <li><a href="{p}press.html">5 West Diamond Awards Gold, 2026</a></li>
       </ul>
     </div>
@@ -271,7 +451,7 @@ def page(title, desc, body, active="", depth=0):
 <meta name="description" content="{desc}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 {css}
 </style>
@@ -296,12 +476,12 @@ def build_index():
         for i, (img_id, t, c) in enumerate(HERO_SLIDES))
 
     featured = "\n".join(f"""    <a class="card reveal" href="projects/{pr['slug']}.html">
-      <div class="frame"><img src="{img(pr['images'][0][0])}" alt="{pr['title']} — interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="frame"><img src="{thumb_src(pr)}" alt="{pr['title']}, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">{pr['cat']}</span>
         <span class="display-md">{pr['title']}</span>
       </div>
-    </a>""" for pr in PROJECTS)
+    </a>""" for pr in PROJECTS if pr["type"] == "residential")
 
     body = f"""<section class="hero">
 {slides}
@@ -315,7 +495,7 @@ def build_index():
 <section class="section">
   <div class="wrap-narrow statement reveal">
     <span class="eyebrow">Lauren Burns Interiors</span>
-    <p class="lede">Timeless interiors, elevated living &mdash; layered, sophisticated spaces shaped around the way you live.</p>
+    <p class="lede">Timeless interiors, elevated living, layered, sophisticated spaces shaped around the way you live.</p>
     <a class="btn" href="about.html">About the Studio</a>
   </div>
 </section>
@@ -354,17 +534,17 @@ def build_index():
 <section class="section">
   <div class="wrap-narrow statement reveal">
     <span class="eyebrow">Recognition</span>
-    <p class="lede">Voted Best Interior Design Firm &mdash; Cary Magazine Maggy Awards, six consecutive years.</p>
+    <p class="lede">Voted Best Interior Design Firm, Cary Magazine Maggy Awards, six consecutive years.</p>
     <a class="btn" href="press.html">Press &amp; Awards</a>
   </div>
 </section>"""
     return page("Lauren Burns Interiors | Interior Design | Raleigh, NC",
-                "Lauren Burns Interiors designs timeless, layered, sophisticated living spaces — residential and commercial interior design in Raleigh, NC and nationwide.",
+                "Lauren Burns Interiors designs timeless, layered, sophisticated living spaces, residential and commercial interior design in Raleigh, NC and nationwide.",
                 body, active="")
 
 def build_portfolio():
-    cards = "\n".join(f"""    <a class="card reveal" href="projects/{pr['slug']}.html">
-      <div class="frame"><img src="{img(pr['images'][0][0])}" alt="{pr['title']} — interior design by Lauren Burns Interiors" loading="lazy"></div>
+    cards = "\n".join(f"""    <a class="card reveal" href="projects/{pr['slug']}.html" data-type="{pr['type']}">
+      <div class="frame"><img src="{thumb_src(pr)}" alt="{pr['title']}, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
         <span class="eyebrow">{pr['cat']}</span>
         <span class="display-md">{pr['title']}</span>
@@ -381,23 +561,30 @@ def build_portfolio():
 </section>
 <section class="section">
   <div class="wrap">
-    <p class="lede reveal" style="max-width:46ch; margin-bottom:4rem;">We are committed to creating spaces for you and your family to foster and cherish memories that last a lifetime.</p>
+    <p class="lede reveal" style="max-width:46ch; margin-bottom:2.5rem;">Residential and commercial spaces designed with intention, from private homes to salons, restaurants, and professional studios.</p>
+    <div class="portfolio-filters reveal" role="tablist" aria-label="Filter portfolio">
+      <button class="portfolio-filter on" type="button" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="portfolio-filter" type="button" data-filter="residential" role="tab" aria-selected="false">Residential</button>
+      <button class="portfolio-filter" type="button" data-filter="commercial" role="tab" aria-selected="false">Commercial</button>
+    </div>
     <div class="grid-projects">
 {cards}
     </div>
   </div>
 </section>"""
     return page("Portfolio | Lauren Burns Interiors",
-                "Residential and commercial interior design portfolio by Lauren Burns Interiors — Raleigh, NC.",
+                "Residential and commercial interior design portfolio by Lauren Burns Interiors, Raleigh, NC.",
                 body, active="Portfolio")
 
-def build_project(pr, idx):
+def build_project(pr):
     figs = "\n".join(
-        f'    <figure class="{cls} reveal"><img src="{img(iid, depth=1)}" alt="{pr["title"]} — interior detail" loading="lazy"></figure>'
-        for iid, cls in pr["images"])
-    nxt = PROJECTS[(idx + 1) % len(PROJECTS)]
+        f'    <figure class="{cls} reveal"><img src="{img(iid, depth=1, ext=ext)}" alt="{pr["title"]}, interior detail" loading="lazy"></figure>'
+        for iid, cls, ext in (parse_image(entry) for entry in pr["images"]))
+    peers = [p for p in PROJECTS if p["type"] == pr["type"]]
+    nxt = peers[(peers.index(pr) + 1) % len(peers)]
+    hero_iid, _, hero_ext = parse_image(pr["images"][0])
     body = f"""<section class="page-hero">
-  <div class="bg" style="background-image:url('{img(pr['images'][0][0], depth=1)}')"></div>
+  <div class="bg" style="background-image:url('{img(hero_iid, depth=1, ext=hero_ext)}')"></div>
   <div class="hero-caption">
     <span class="eyebrow">{pr['cat']}</span>
     <h1 class="display-xl">{pr['title']}</h1>
@@ -419,7 +606,7 @@ def build_project(pr, idx):
   </div>
 </section>"""
     return page(f"{pr['title']} | Lauren Burns Interiors",
-                f"{pr['title']} — {pr['blurb']}", body, active="Portfolio", depth=1)
+                f"{pr['title']}, {pr['blurb']}", body, active="Portfolio", depth=1)
 
 def build_about():
     rows = "\n".join(f"""    <div class="team-row reveal">
@@ -431,7 +618,7 @@ def build_about():
       </div>
     </div>""" for name, role, img_id, ext, bio in TEAM)
     body = f"""<section class="page-hero">
-  <div class="bg" style="background-image:url('{img('0b75c1_fee480971fe84e58b260f842b8c03450')}')"></div>
+  <div class="bg" style="background-image:url('{img('0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3')}')"></div>
   <div class="hero-caption">
     <span class="eyebrow">About</span>
     <h1 class="display-xl">The Studio</h1>
@@ -440,7 +627,7 @@ def build_about():
 </section>
 <section class="section">
   <div class="wrap-narrow">
-    <p class="lede reveal" style="margin-bottom:1.5rem;">Great design results from collaboration &mdash; the union that occurs when a client&rsquo;s dreams and a designer&rsquo;s skill come together.</p>
+    <p class="lede reveal" style="margin-bottom:1.5rem;">Great design results from collaboration, the union that occurs when a client&rsquo;s dreams and a designer&rsquo;s skill come together.</p>
     <p class="muted reveal">Lauren Burns Interiors is a full-service interior design firm specializing in residential and commercial design. Our approach is fresh, innovative, and personal, helping you create an inviting, timeless, and functional environment. Whether your dream is a custom-designed home or a creatively remodeled kitchen, we bring the expertise and vision to bring your living spaces to life.</p>
   </div>
 </section>
@@ -450,7 +637,7 @@ def build_about():
   </div>
 </section>"""
     return page("About | Lauren Burns Interiors",
-                "Meet the team behind Lauren Burns Interiors — full-service residential and commercial interior design in Raleigh, NC.",
+                "Meet the team behind Lauren Burns Interiors, full-service residential and commercial interior design in Raleigh, NC.",
                 body, active="About")
 
 def build_services():
@@ -480,7 +667,7 @@ def build_services():
   </div>
 </section>"""
     return page("Services | Lauren Burns Interiors",
-                "Interior design services by Lauren Burns Interiors — new construction, renovation and remodel design, full furnishing and styling, space planning, and virtual design nationwide.",
+                "Interior design services by Lauren Burns Interiors, new construction, renovation and remodel design, full furnishing and styling, space planning, and virtual design nationwide.",
                 body, active="Services")
 
 def build_press():
@@ -510,7 +697,7 @@ def build_press():
   </div>
 </section>"""
     return page("Press | Lauren Burns Interiors",
-                "Awards and press for Lauren Burns Interiors — Best Interior Design Firm, Cary Magazine Maggy Awards, and features in publications across the Carolinas.",
+                "Awards and press for Lauren Burns Interiors, Best Interior Design Firm, Cary Magazine Maggy Awards, and features in publications across the Carolinas.",
                 body, active="Press")
 
 def build_contact():
@@ -551,7 +738,7 @@ def build_contact():
   </div>
 </section>"""
     return page("Enquire | Lauren Burns Interiors",
-                "Start a project with Lauren Burns Interiors — residential and commercial interior design in Raleigh, NC and nationwide.",
+                "Start a project with Lauren Burns Interiors, residential and commercial interior design in Raleigh, NC and nationwide.",
                 body, active="Enquire")
 
 # ---------------------------------------------------------------- write
@@ -573,6 +760,6 @@ if __name__ == "__main__":
     write("services.html", build_services())
     write("press.html", build_press())
     write("contact.html", build_contact())
-    for i, pr in enumerate(PROJECTS):
-        write(f"projects/{pr['slug']}.html", build_project(pr, i))
-    print("done —", len(PROJECTS) + 6, "pages")
+    for pr in PROJECTS:
+        write(f"projects/{pr['slug']}.html", build_project(pr))
+    print("done,", len(PROJECTS) + 6, "pages")
