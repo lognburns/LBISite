@@ -59,4 +59,4 @@ The site deploys automatically on every push to `main`.
 
 **Client URL:** https://lognburns.github.io/LBISite/
 
-Pages publishes the `site/` folder to the `gh-pages` branch on every push to `main`. In the repo, set **Settings → Pages → Build and deployment → Deploy from branch → `gh-pages` / `/ (root)`**.
+Pages deploys the `site/` folder via GitHub Actions on every push to `main`. In the repo, set **Settings → Pages → Build and deployment → Source → GitHub Actions** (one-time setup).
