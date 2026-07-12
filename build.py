@@ -277,22 +277,22 @@ HERO_SLIDES = [
 
 SERVICES = [
     ("New Construction & Finish Selections",
-     "From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike, countertops, cabinetry, tile, lighting, flooring, exterior materials, paint, and stains, organized and submitted on schedule for a seamless build."),
+     "From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike. From countertops and cabinetry to tile, lighting, flooring, exterior materials, paint, and stains, every selection is organized and submitted on schedule for a seamless build."),
     ("Renovation & Remodel Design",
      "Redesigning a kitchen, bath, or entire home? We collaborate closely with you and your general contractor to ensure thoughtful design, clear communication, and timely execution. From space planning and renderings to finish selections and project coordination, we manage the design process from start to completion."),
     ("Full Furnishings & Styling",
-     "A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories, curated, procured, and installed to create a polished, livable result that feels both elevated and personal."),
+     "A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories that are curated, procured, and installed to create a polished, livable result that feels both elevated and personal."),
     ("Space Planning, Furniture & Procurement",
-     "Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully, both functionally and aesthetically."),
+     "Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully from both a functional and aesthetic standpoint."),
     ("Virtual & National Design",
-     "Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience, wherever you are."),
+     "Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience wherever you are."),
 ]
 
 TEAM = [
     ("Lauren Burns", "Owner & Principal Designer", "0b75c1_a254cabfc36d4db7bd16f7b004497910", "jpg",
      "Lauren Burns designs spaces that are timeless with a masterful mix of styles, from traditional to contemporary. Lauren loves turning spaces that need an overhaul into layered, sophisticated and usable living spaces for clients. She owns her client\u2019s desires for the home, combines them with her passion for design and creates spaces they are proud to live in, spaces that feel effortlessly chic and purposeful. By layering textures, along with mixing new with vintage pieces, she creates signature interiors with sophisticated simplicity. Accompanied by over 10 years of experience in the interior design industry, Lauren uses her expertise to turn her creative vision into your reality."),
     ("Daniela McShane", "Design Coordinator", "0b75c1_e81a52b91d594af0934736df6c80d7f8", "jpg",
-     "Daniela is the touchpoint for all new client discovery calls and contracts, and assists with project management for our clients throughout the entire design process. Detail oriented and always thinking outside the box when needed, Daniela ensures our clients have a seamless design experience, her kind personality and attention to detail are something clients comment on often."),
+     "Daniela is the touchpoint for all new client discovery calls and contracts, and assists with project management for our clients throughout the entire design process. Detail oriented and always thinking outside the box when needed, Daniela ensures our clients have a seamless design experience. Her kind personality and attention to detail are something clients comment on often."),
     ("Taylor Weller", "Design Assistant", "0b75c1_3c5ad5204ba94cca921e382830e0d4d6", "jpeg",
      "Taylor assists Lauren with presentation prep and behind-the-scenes coordination to help bring each project to life, supporting the team with her talent for organization and strong attention to detail. Her background in digital marketing and her eye for design make her a valuable asset, and her thoughtful communication keeps our brand voice consistent and authentic across every platform."),
 ]
@@ -415,7 +415,7 @@ def footer(depth=0):
   <div class="footer-grid">
     <div>
 {brand_block(depth, footer=True)}
-      <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless interiors, elevated living. Residential and commercial design across the Triangle and nationwide.</p>
+      <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless. Tailored. Elegant.<br>Luxury Residential &amp; Commercial Interiors | Raleigh-Based, Serving Clients Nationwide</p>
     </div>
     <div>
       <h4>Studio</h4>
@@ -456,7 +456,15 @@ def _read(rel):
 FORMSPREE_FORM_ID = "mbdnrbko"
 FORMSPREE_SCRIPT = f"""<script>
   window.formspree = window.formspree || function () {{ (formspree.q = formspree.q || []).push(arguments); }};
-  formspree('initForm', {{ formElement: '#inquiry-form', formId: '{FORMSPREE_FORM_ID}' }});
+  formspree('initForm', {{
+    formElement: '#inquiry-form',
+    formId: '{FORMSPREE_FORM_ID}',
+    useDefaultStyles: false,
+    onSuccess: function (ctx) {{
+      var el = ctx.form.querySelector('[data-fs-success]');
+      if (el) el.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+    }}
+  }});
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>"""
 
@@ -675,7 +683,7 @@ def build_services():
 </section>
 <section class="section">
   <div class="wrap">
-    <p class="lede reveal" style="max-width:46ch; margin-bottom:4rem;">From new construction to full furnishing, every engagement is guided by intention, cohesion, and clear communication.</p>
+    <p class="lede reveal" style="max-width:46ch; margin-bottom:4rem;">From new construction to full furnishings, every engagement is guided by intention, cohesion, and clear communication.</p>
 {rows}
   </div>
 </section>
@@ -687,7 +695,7 @@ def build_services():
   </div>
 </section>"""
     return page("Services | Lauren Burns Interiors",
-                "Interior design services by Lauren Burns Interiors, new construction, renovation and remodel design, full furnishing and styling, space planning, and virtual design nationwide.",
+                "Interior design services by Lauren Burns Interiors: new construction, renovation and remodel design, full furnishings and styling, space planning, and virtual design nationwide.",
                 body, active="Services")
 
 def build_press():
@@ -732,8 +740,6 @@ def build_contact():
 <section class="section">
   <div class="wrap-narrow">
     <p class="lede reveal" style="margin-bottom:3.5rem;">Tell us about your project and we will be in touch shortly.</p>
-    <div class="form-status reveal" data-fs-success></div>
-    <div class="form-status form-status-error reveal" data-fs-error></div>
     <form id="inquiry-form" class="form-grid reveal" name="inquiry" action="https://formspree.io/f/{FORMSPREE_FORM_ID}" method="POST">
       <input type="hidden" name="_subject" value="New inquiry — Lauren Burns Interiors">
       <label><span>First Name</span><input type="text" name="first-name" autocomplete="given-name" data-fs-field required><span class="field-error" data-fs-error="first-name"></span></label>
@@ -755,9 +761,13 @@ def build_contact():
       <label class="full"><span>Which rooms are included in your project?</span><input type="text" name="rooms" data-fs-field></label>
       <label class="full"><span>Describe what we can help you with</span><textarea name="message" data-fs-field required></textarea><span class="field-error" data-fs-error="message"></span></label>
       <label class="full"><span>How did you hear about us?</span><input type="text" name="referral" data-fs-field></label>
-      <div class="full"><button class="btn" type="submit" data-fs-submit-btn style="background:none; cursor:pointer;">Submit Inquiry</button></div>
+      <div class="full form-submit-wrap">
+        <button class="btn btn-submit" type="submit" data-fs-submit-btn>Submit Inquiry</button>
+        <div class="form-status" data-fs-success></div>
+        <div class="form-status form-status-error" data-fs-error></div>
+      </div>
     </form>
-    <p class="muted reveal" style="margin-top:3rem; font-size:0.9rem;">Prefer to talk? Call us at <a href="tel:+19198185683" style="color:var(--bone);">{PHONE}</a>.</p>
+    <p class="muted reveal" style="margin-top:3rem; font-size:0.9rem;">Prefer to Call or Text? You can reach us at <a href="tel:+19198185683" style="color:var(--bone);">(919) 818 - 5683</a>.</p>
   </div>
 </section>"""
     return page("Inquire | Lauren Burns Interiors",

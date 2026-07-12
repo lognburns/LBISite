@@ -486,9 +486,59 @@ input:focus, select:focus, textarea:focus {
 select { appearance: none; }
 select option { background: var(--ink); }
 textarea { resize: vertical; min-height: 7rem; }
-.form-status:empty { display: none; }
-.form-status { margin-bottom: 1.5rem; color: var(--gold); font-size: 0.95rem; }
-.form-status-error { color: #d4a59a; }
+.form-submit-wrap {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+.btn.btn-submit {
+  width: 100%;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  padding: 1.3rem 2rem;
+  background: var(--gradient-gold) !important;
+  color: var(--ink) !important;
+  border: none;
+  box-shadow: 0 4px 28px rgba(201, 168, 106, 0.4);
+  transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.btn.btn-submit:hover {
+  filter: brightness(1.1);
+  color: var(--ink) !important;
+  box-shadow: 0 6px 32px rgba(201, 168, 106, 0.5);
+  transform: translateY(-1px);
+}
+.btn.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+  box-shadow: 0 2px 12px rgba(201, 168, 106, 0.25);
+}
+.form-status {
+  display: none;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 2px;
+}
+.form-status[data-fs-active] {
+  display: block;
+}
+.form-status[data-fs-success][data-fs-active] {
+  color: var(--gold);
+  background: rgba(201, 168, 106, 0.1);
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+.form-status-error[data-fs-active] {
+  color: #e8c4bc;
+  background: rgba(212, 165, 154, 0.1);
+  border: 1px solid rgba(212, 165, 154, 0.35);
+}
 .field-error:empty { display: none; }
 .field-error { display: block; margin-top: 0.35rem; font-size: 0.8125rem; color: #d4a59a; }
 input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
@@ -613,7 +663,7 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
       <span class="brand-sub">Interiors, Raleigh, NC</span>
     </span>
     </div>
-      <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless interiors, elevated living. Residential and commercial design across the Triangle and nationwide.</p>
+      <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless. Tailored. Elegant.<br>Luxury Residential &amp; Commercial Interiors | Raleigh-Based, Serving Clients Nationwide</p>
     </div>
     <div>
       <h4>Studio</h4>
