@@ -53,6 +53,7 @@ PROJECTS = [
             ("lochinvar_241016_1940w", "g-w"),
             ("lochinvar_241016_2275w", "g-h"),
             ("lochinvar_241016_1920w", "g-h"),
+            ("luxury_241016_1970w", "g-w"),
             ("lochinvar_241016_1988w", "g-w"),
             ("lochinvar_241016_2166w", "g-h"),
             ("lochinvar_241016_2068w", "g-w"),
@@ -67,7 +68,6 @@ PROJECTS = [
             ("lochinvar_241016_2258w", "g-t"),
             ("lochinvar_241016_2156w", "g-t"),
             ("lochinvar_241016_2303w", "g-w"),
-            ("lochinvar_241016_2032w", "g-h"),
         ],
     },
     {
@@ -95,19 +95,18 @@ PROJECTS = [
         "cat": "Private Residential",
         "blurb": "Soft neutrals and organic materials in easy conversation, sophistication without a hint of effort.",
         "images": [
-            ("organic_231117_368w", "g-w"),
+            ("organic_231117_364w", "g-w"),
             ("organic_231117_378w", "g-w"),
             ("organic_231117_294w", "g-t"),
             ("organic_231117_306w", "g-t"),
             ("organic_231117_276w", "g-w"),
             ("organic_231117_218", "g-t"),
-            ("organic_231117_214", "g-w"),
             ("organic_231117_352w", "g-w"),
             ("organic_231117_234", "g-w"),
             ("organic_231117_326w", "g-t"),
             ("organic_231117_274w", "g-t"),
             ("organic_231117_204", "g-t"),
-            ("organic_231117_195", "g-w"),
+            ("organic_231117_197", "g-t"),
         ],
     },
     {
@@ -217,7 +216,6 @@ PROJECTS = [
         "images": [
             ("0b75c1_320d427f58e6470c9f4938ca1a832a38", "g-h"),
             ("0b75c1_c8fe9ef7bb404fb090c9fccee373ab85", "g-t"),
-            ("0b75c1_b172ec7ab5d44ffd9797e858ec841e36", "g-w"),
             ("0b75c1_53bdbfa00d76477fb6e7a4da0e9f8bf4", "g-h"),
             ("0b75c1_8eabd51d7c0c4b48959b7ca447c6888a", "g-h"),
             ("0b75c1_6f44a95d7eb044f2b84b98cbbd910f0b", "g-t"),
@@ -313,7 +311,7 @@ PROJECTS = [
 HERO_SLIDES = [
     ("0b75c1_a97310e5504d41d69c3f35d83c08957f", "Bold & Earthy", "Private Residential"),
     ("luxury_241016_patiow", "Custom Luxury", "Private Residential"),
-    ("organic_231117_368w", "Organic Sophistication", "Private Residential"),
+    ("organic_231117_364w", "Organic Sophistication", "Private Residential"),
 ]
 
 HERO_SLIDES_MOBILE = [
