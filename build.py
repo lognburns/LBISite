@@ -46,13 +46,13 @@ PROJECTS = [
         "cat": "Private Residential",
         "blurb": "Layered blues and tailored millwork give this residence a quietly grand register, classic forms, modern restraint.",
         "images": [
+            ("luxury_241016_patiow", "g-w"),
             ("lochinvar_241016_1883w", "g-w"),
             ("lochinvar_241016_2265w", "g-w"),
             ("lochinvar_241016_1892w", "g-t"),
             ("lochinvar_241016_1940w", "g-w"),
             ("lochinvar_241016_2275w", "g-h"),
             ("lochinvar_241016_1920w", "g-h"),
-            ("0b75c1_d48f5e242e774d4ca6cdac93cfe24637", "g-w"),
             ("lochinvar_241016_1988w", "g-w"),
             ("lochinvar_241016_2166w", "g-h"),
             ("lochinvar_241016_2068w", "g-w"),
@@ -95,12 +95,19 @@ PROJECTS = [
         "cat": "Private Residential",
         "blurb": "Soft neutrals and organic materials in easy conversation, sophistication without a hint of effort.",
         "images": [
-            ("0b75c1_fee480971fe84e58b260f842b8c03450", "g-w"),
-            ("0b75c1_ca4e7cecf0934ed2b3c1cdbd0f4c5c93", "g-t"),
-            ("0b75c1_d2d737c0626c4616ade8c45b02b27f48", "g-s"),
-            ("0b75c1_7316658382084d91b7301653f83d1bf0", "g-s"),
-            ("0b75c1_871d9aee1a54462892fc87beda60ca3c", "g-s"),
-            ("0b75c1_584e30f55ba1422ebacb1ca515d78dc0", "g-w"),
+            ("organic_231117_368w", "g-w"),
+            ("organic_231117_378w", "g-w"),
+            ("organic_231117_294w", "g-t"),
+            ("organic_231117_306w", "g-t"),
+            ("organic_231117_276w", "g-w"),
+            ("organic_231117_218", "g-t"),
+            ("organic_231117_214", "g-w"),
+            ("organic_231117_352w", "g-w"),
+            ("organic_231117_234", "g-w"),
+            ("organic_231117_326w", "g-t"),
+            ("organic_231117_274w", "g-t"),
+            ("organic_231117_204", "g-t"),
+            ("organic_231117_195", "g-w"),
         ],
     },
     {
@@ -108,18 +115,25 @@ PROJECTS = [
         "cat": "Private Residential",
         "blurb": "Polished finishes and a disciplined palette, chic that reads as timeless rather than trend.",
         "images": [
+            ("chic_201009_0083w", "g-w"),
+            ("chic_201009_0073w", "g-t"),
             ("0b75c1_34df603a7fc84393b0f12c51d26a4f42", "g-s"),
             ("0b75c1_3e288df7304f4d94ad9f14a47f7f5bb2", "g-s"),
             ("0b75c1_cd65cb5515ba4c269336360197b6e0b6", "g-s"),
             ("0b75c1_951bfcb6e57f4df9a129a0a0c60bd18b", "g-s"),
             ("0b75c1_69b48635031d45babb53d8bc25c17981", "g-s"),
-            ("0b75c1_319100a495c04bec8e94a036b90349fb", "g-s"),
             ("0b75c1_dc364636e38d4e978e8517c50a45da52", "g-s"),
-            ("0b75c1_09dc4cfd1d164e8b86cad7dc6c092ad5", "g-s"),
             ("0b75c1_4c0329764cbf4cccb1b676fa5607fbe0", "g-s"),
             ("0b75c1_92f92e7dedbb4fb38f2113501f384d6d", "g-s"),
             ("0b75c1_5b832bd7c9d54404804ddf716a8bea95", "g-s"),
             ("0b75c1_e655539cefd949edb167527fbd7b4547", "g-s"),
+            ("chic_210611_0398w", "g-w"),
+            ("chic_210611_0408w", "g-w"),
+            ("chic_210611_0388w", "g-t"),
+            ("chic_210611_0392w", "g-t"),
+            ("chic_210611_0412w", "g-t"),
+            ("chic_210611_0426w", "g-t"),
+            ("chic_210611_0394w", "g-t"),
         ],
     },
     {
@@ -128,13 +142,36 @@ PROJECTS = [
         "blurb": "Soft coastal palettes and relaxed furnishings create an easy, sun-washed retreat by the water.",
         "images": [
             ("0b75c1_7a83ba69f68747bf8ade1cf08d139c23", "g-w"),
+            ("beachhouse_230523_065w", "g-w"),
+            ("beachhouse_230523_035w", "g-t"),
+            ("beachhouse_230523_135w", "g-t"),
+            ("beachhouse_230523_149w", "g-t"),
             ("beachhouse_230523_225", "g-w"),
-            ("beachhouse_230523_081", "g-w"),
-            ("beachhouse_230523_091", "g-h"),
+            ("beachhouse_230523_171w", "g-w"),
+            ("beachhouse_230523_199w", "g-t"),
+            ("beachhouse_230523_195w", "g-t"),
+            ("beachhouse_230523_203w", "g-t"),
+            ("beachhouse_230523_167w", "g-w"),
+            ("beachhouse_230523_207w", "g-w"),
+            ("beachhouse_230523_219w", "g-t"),
             ("beachhouse_230523_039", "g-w"),
-            ("beachhouse_230523_237", "g-w"),
+            ("beachhouse_230523_217w", "g-t"),
+            ("beachhouse_230523_291w", "g-w"),
             ("beachhouse_230523_001", "g-h"),
             ("beachhouse_230523_023", "g-h"),
+            ("beachhouse_230523_237", "g-w"),
+            ("beachhouse_230523_071w", "g-t"),
+            ("beachhouse_230523_223w", "g-t"),
+            ("beachhouse_230523_245w", "g-t"),
+            ("beachhouse_230523_081", "g-w"),
+            ("beachhouse_230523_091", "g-h"),
+            ("beachhouse_230523_247w", "g-w"),
+            ("beachhouse_230523_117w", "g-t"),
+            ("beachhouse_230523_115w", "g-t"),
+            ("beachhouse_230523_111w", "g-t"),
+            ("beachhouse_230523_047w", "g-w"),
+            ("beachhouse_230523_213w", "g-t"),
+            ("beachhouse_230523_165w", "g-t"),
         ],
     },
     {
@@ -275,8 +312,8 @@ PROJECTS = [
 
 HERO_SLIDES = [
     ("0b75c1_a97310e5504d41d69c3f35d83c08957f", "Bold & Earthy", "Private Residential"),
-    ("0b75c1_d48f5e242e774d4ca6cdac93cfe24637", "Custom Luxury", "Private Residential"),
-    ("0b75c1_fee480971fe84e58b260f842b8c03450", "Organic Sophistication", "Private Residential"),
+    ("luxury_241016_patiow", "Custom Luxury", "Private Residential"),
+    ("organic_231117_368w", "Organic Sophistication", "Private Residential"),
 ]
 
 HERO_SLIDES_MOBILE = [
@@ -636,7 +673,7 @@ def build_index():
   <div class="wrap">
     <div class="panels reveal">
       <a class="panel" href="portfolio.html">
-        <div class="bg" style="background-image:url('{img('0b75c1_d48f5e242e774d4ca6cdac93cfe24637')}')"></div>
+        <div class="bg" style="background-image:url('{img('luxury_241016_patiow')}')"></div>
         <div class="panel-label"><span class="eyebrow">Portfolio</span><span class="display-md">Residential Design</span></div>
       </a>
       <a class="panel" href="services.html">
