@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Services | Lauren Burns Interiors</title>
-<meta name="description" content="Interior design services by Lauren Burns Interiors, new construction, renovation and remodel design, full furnishing and styling, space planning, and virtual design nationwide.">
+<meta name="description" content="Interior design services by Lauren Burns Interiors: new construction, renovation and remodel design, full furnishings and styling, space planning, and virtual design nationwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -486,9 +486,59 @@ input:focus, select:focus, textarea:focus {
 select { appearance: none; }
 select option { background: var(--ink); }
 textarea { resize: vertical; min-height: 7rem; }
-.form-status:empty { display: none; }
-.form-status { margin-bottom: 1.5rem; color: var(--gold); font-size: 0.95rem; }
-.form-status-error { color: #d4a59a; }
+.form-submit-wrap {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+.btn.btn-submit {
+  width: 100%;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  padding: 1.3rem 2rem;
+  background: var(--gradient-gold) !important;
+  color: var(--ink) !important;
+  border: none;
+  box-shadow: 0 4px 28px rgba(201, 168, 106, 0.4);
+  transition: filter 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.btn.btn-submit:hover {
+  filter: brightness(1.1);
+  color: var(--ink) !important;
+  box-shadow: 0 6px 32px rgba(201, 168, 106, 0.5);
+  transform: translateY(-1px);
+}
+.btn.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+  box-shadow: 0 2px 12px rgba(201, 168, 106, 0.25);
+}
+.form-status {
+  display: none;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 2px;
+}
+.form-status[data-fs-active] {
+  display: block;
+}
+.form-status[data-fs-success][data-fs-active] {
+  color: var(--gold);
+  background: rgba(201, 168, 106, 0.1);
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+.form-status-error[data-fs-active] {
+  color: #e8c4bc;
+  background: rgba(212, 165, 154, 0.1);
+  border: 1px solid rgba(212, 165, 154, 0.35);
+}
 .field-error:empty { display: none; }
 .field-error { display: block; margin-top: 0.35rem; font-size: 0.8125rem; color: #d4a59a; }
 input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
@@ -575,10 +625,10 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 </section>
 <section class="section">
   <div class="wrap">
-    <p class="lede reveal" style="max-width:46ch; margin-bottom:4rem;">From new construction to full furnishing, every engagement is guided by intention, cohesion, and clear communication.</p>
+    <p class="lede reveal" style="max-width:46ch; margin-bottom:4rem;">From new construction to full furnishings, every engagement is guided by intention, cohesion, and clear communication.</p>
     <div class="service-row reveal">
       <h3 class="display-md">New Construction & Finish Selections</h3>
-      <p class="muted">From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike, countertops, cabinetry, tile, lighting, flooring, exterior materials, paint, and stains, organized and submitted on schedule for a seamless build.</p>
+      <p class="muted">From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike. From countertops and cabinetry to tile, lighting, flooring, exterior materials, paint, and stains, every selection is organized and submitted on schedule for a seamless build.</p>
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Renovation & Remodel Design</h3>
@@ -586,15 +636,15 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Full Furnishings & Styling</h3>
-      <p class="muted">A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories, curated, procured, and installed to create a polished, livable result that feels both elevated and personal.</p>
+      <p class="muted">A fully realized home, thoughtfully layered. This service includes space planning, furniture selection, custom pieces, textiles, lighting, and accessories that are curated, procured, and installed to create a polished, livable result that feels both elevated and personal.</p>
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Space Planning, Furniture & Procurement</h3>
-      <p class="muted">Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully, both functionally and aesthetically.</p>
+      <p class="muted">Ideal for clients seeking professional guidance without full-scale renovation. We develop detailed floor plans, layouts, and design direction, then handle sourcing and procurement to ensure everything fits beautifully from both a functional and aesthetic standpoint.</p>
     </div>
     <div class="service-row reveal">
       <h3 class="display-md">Virtual & National Design</h3>
-      <p class="muted">Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience, wherever you are.</p>
+      <p class="muted">Not located in North Carolina? We work with clients nationwide through virtual consultations, digital presentations, and mailed samples. Using photos, measurements, and collaborative meetings, we deliver a complete design experience wherever you are.</p>
     </div>
   </div>
 </section>
@@ -616,7 +666,7 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
       <span class="brand-sub">Interiors, Raleigh, NC</span>
     </span>
     </div>
-      <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless interiors, elevated living. Residential and commercial design across the Triangle and nationwide.</p>
+      <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless. Tailored. Elegant.<br>Luxury Residential &amp; Commercial Interiors | Raleigh-Based, Serving Clients Nationwide</p>
     </div>
     <div>
       <h4>Studio</h4>
