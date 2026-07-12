@@ -588,7 +588,10 @@ FORMSPREE_SCRIPT = f"""<script>
     useDefaultStyles: false,
     onSuccess: function (ctx) {{
       var el = ctx.form.querySelector('[data-fs-success]');
-      if (el) el.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+      if (el) {{
+        el.textContent = 'Thank you for your inquiry. Our team will reach out to you soon!';
+        el.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+      }}
     }}
   }});
 </script>
@@ -887,6 +890,7 @@ def build_contact():
       <label><span>Desired Start Date</span><input type="text" name="start-date" data-fs-field></label>
       <label><span>Project Type</span>
         <select name="project-type" data-fs-field>
+          <option value="" selected disabled>Select from below ---</option>
           <option>New Construction</option>
           <option>Renovation &amp; Remodel</option>
           <option>Full Furnishing &amp; Styling</option>
