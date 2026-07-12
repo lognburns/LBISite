@@ -330,6 +330,7 @@ FEATURES = [
 PHONE = "(919) 818-5683"
 IG = "https://instagram.com/laurenburnsinteriors"
 FB = "https://www.facebook.com/laurenburnsinteriors"
+CUSTOM_DOMAIN = "www.laurenburnsinteriors.com"
 
 def all_images():
     """Every (img_id, ext) pair referenced by the site."""
@@ -495,7 +496,6 @@ def footer(depth=0):
   <div class="footer-grid">
     <div>
 {brand_block(depth, footer=True)}
-      <p class="muted" style="margin-top:1.2rem; max-width:32ch; font-size:0.9rem;">Timeless. Tailored. Elegant.<br>Luxury Residential &amp; Commercial Interiors | Raleigh-Based, Serving Clients Nationwide</p>
     </div>
     <div>
       <h4>Studio</h4>
@@ -503,7 +503,6 @@ def footer(depth=0):
         <li><a href="{p}portfolio.html">Portfolio</a></li>
         <li><a href="{p}about.html">About</a></li>
         <li><a href="{p}services.html">Services</a></li>
-        <li><a href="{p}press.html">Press</a></li>
       </ul>
     </div>
     <div>
@@ -777,7 +776,7 @@ def build_press():
     body = f"""<section class="page-hero plain">
   <div class="hero-caption">
     <span class="eyebrow">Press</span>
-    <h1 class="display-xl">Awards &amp; Recognition</h1>
+    <h1 class="display-xl">Awards</h1>
     <div class="hero-rule"></div>
   </div>
 </section>
@@ -855,6 +854,12 @@ def write(path, html):
         f.write(html)
     print("wrote", path)
 
+def write_cname():
+    full = os.path.join(OUT, "CNAME")
+    with open(full, "w") as f:
+        f.write(CUSTOM_DOMAIN + "\n")
+    print("wrote", "CNAME")
+
 if __name__ == "__main__":
     if "--fetch-images" in sys.argv:
         download_images()
@@ -871,4 +876,5 @@ if __name__ == "__main__":
     write("contact.html", build_contact())
     for pr in PROJECTS:
         write(f"projects/{pr['slug']}.html", build_project(pr))
+    write_cname()
     print("done,", len(PROJECTS) + 6, "pages")
