@@ -21,15 +21,19 @@ def wix_src(img_id, ext="jpg"):
     """Original Wix CDN URL (used only when fetching assets)."""
     return f"https://static.wixstatic.com/media/{img_id}~mv2.{ext}"
 
+def normalize_ext(ext):
+    ext = ext.lower()
+    return "jpg" if ext == "jpeg" else ext
+
 def img(img_id, depth=0, ext="jpg"):
     """Relative path to a locally hosted image."""
     prefix = "../" * depth
-    return f"{prefix}{IMG_DIR}/{img_id}.{ext}"
+    return f"{prefix}{IMG_DIR}/{img_id}.{normalize_ext(ext)}"
 
 def parse_image(entry):
     if len(entry) == 2:
         return entry[0], entry[1], "jpg"
-    return entry[0], entry[1], entry[2]
+    return entry[0], entry[1], normalize_ext(entry[2])
 
 def thumb_src(pr, depth=0):
     iid, _, ext = parse_image(pr["images"][0])
@@ -213,11 +217,11 @@ PROJECTS = [
         "cat": "Los Angeles, CA",
         "blurb": "Prop styling for Trex through Karma Agency. Photography by Catherine Nguyen.",
         "images": [
-            ("0b75c1_24a500c9a74846899bb02f0032002389", "g-s", "jpeg"),
-            ("0b75c1_3a64b5cc36584091a08082c66131c4c9", "g-s", "jpeg"),
-            ("0b75c1_f41f61e939fd40e7b6779d7ca6d6ea89", "g-s", "jpeg"),
-            ("0b75c1_f628815c10d644248b88ac57d2e7d373", "g-s", "jpeg"),
-            ("0b75c1_9abb33e0a6df4d348fdfe50b714f2e85", "g-s", "jpeg"),
+            ("0b75c1_24a500c9a74846899bb02f0032002389", "g-s", "jpg"),
+            ("0b75c1_3a64b5cc36584091a08082c66131c4c9", "g-s", "jpg"),
+            ("0b75c1_f41f61e939fd40e7b6779d7ca6d6ea89", "g-s", "jpg"),
+            ("0b75c1_f628815c10d644248b88ac57d2e7d373", "g-s", "jpg"),
+            ("0b75c1_9abb33e0a6df4d348fdfe50b714f2e85", "g-s", "jpg"),
         ],
     },
     {
@@ -252,7 +256,7 @@ PROJECTS = [
         "images": [
             ("0b75c1_5f343a32cc5847979d2f23417f947833", "g-w"),
             ("0b75c1_caa7dd77cfce4b4e98f80aee306b783f", "g-t", "png"),
-            ("0b75c1_f090b49e581f4c8bb5c2487c70843232", "g-w", "jpeg"),
+            ("0b75c1_f090b49e581f4c8bb5c2487c70843232", "g-w", "jpg"),
             ("0b75c1_331aa00cb91641a7b78790bbff354aee", "g-w"),
             ("0b75c1_4ea1b3e727c74020a3c67d3b405bb3f9", "g-w"),
         ],
@@ -283,7 +287,7 @@ TEAM = [
      "Lauren Burns designs spaces that are timeless with a masterful mix of styles, from traditional to contemporary. Lauren loves turning spaces that need an overhaul into layered, sophisticated and usable living spaces for clients. She owns her client\u2019s desires for the home, combines them with her passion for design and creates spaces they are proud to live in, spaces that feel effortlessly chic and purposeful. By layering textures, along with mixing new with vintage pieces, she creates signature interiors with sophisticated simplicity. Accompanied by over 10 years of experience in the interior design industry, Lauren uses her expertise to turn her creative vision into your reality."),
     ("Daniela McShane", "Design Coordinator", "0b75c1_e81a52b91d594af0934736df6c80d7f8", "jpg",
      "Daniela is the touchpoint for all new client discovery calls and contracts, and assists with project management for our clients throughout the entire design process. Detail oriented and always thinking outside the box when needed, Daniela ensures our clients have a seamless design experience. Her kind personality and attention to detail are something clients comment on often."),
-    ("Taylor Weller", "Design Assistant", "0b75c1_3c5ad5204ba94cca921e382830e0d4d6", "jpeg",
+    ("Taylor Weller", "Design Assistant", "0b75c1_3c5ad5204ba94cca921e382830e0d4d6", "jpg",
      "Taylor assists Lauren with presentation prep and behind-the-scenes coordination to help bring each project to life, supporting the team with her talent for organization and strong attention to detail. Her background in digital marketing and her eye for design make her a valuable asset, and her thoughtful communication keeps our brand voice consistent and authentic across every platform."),
 ]
 
@@ -337,7 +341,7 @@ def all_images():
     for img_id, _, _ in HERO_SLIDES:
         seen.setdefault(img_id, "jpg")
     for _, _, img_id, ext, _ in TEAM:
-        seen[img_id] = ext
+        seen[img_id] = normalize_ext(ext)
     for img_id in (
         "0b75c1_d48f5e242e774d4ca6cdac93cfe24637",
         "0b75c1_69b48635031d45babb53d8bc25c17981",
@@ -351,9 +355,13 @@ def download_images():
     img_root = os.path.join(OUT, IMG_DIR)
     os.makedirs(img_root, exist_ok=True)
     for img_id, ext in all_images():
+        ext = normalize_ext(ext)
         dest = os.path.join(img_root, f"{img_id}.{ext}")
         if os.path.exists(dest) and os.path.getsize(dest) > 0:
             print("skip", f"{img_id}.{ext}")
+            stale = os.path.join(img_root, f"{img_id}.jpeg")
+            if ext == "jpg" and os.path.exists(stale):
+                os.remove(stale)
             continue
         url = wix_src(img_id, ext)
         print("fetch", url)
