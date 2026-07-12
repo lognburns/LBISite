@@ -117,6 +117,25 @@ PROJECTS = [
         ],
     },
     {
+        "slug": "woodland-modern", "title": "Woodland Modern", "type": "residential",
+        "cat": "Private Residential",
+        "blurb": "Dark wood, veined marble, and floor-to-ceiling views, modern lines set against a wooded backdrop.",
+        "images": [
+            ("masc_260209_268w", "g-w"),
+            ("masc_260209_170w", "g-w"),
+            ("masc_260209_202w", "g-w"),
+            ("masc_260209_257w", "g-w"),
+            ("masc_260209_280w", "g-w"),
+            ("masc_260209_288w", "g-w"),
+            ("masc_260209_307w", "g-w"),
+            ("masc_260209_309w", "g-h"),
+            ("masc_260209_315w", "g-w"),
+            ("masc_260209_292w", "g-w"),
+            ("masc_260209_325_2w", "g-w"),
+            ("masc_260209_337w", "g-t"),
+        ],
+    },
+    {
         "slug": "kitchen-refresh", "title": "Kitchen Refresh", "type": "residential",
         "cat": "Private Residential",
         "blurb": "A thoughtful kitchen update, new finishes, improved flow, and details that make everyday cooking feel effortless.",
@@ -434,7 +453,14 @@ def _read(rel):
     with open(os.path.join(OUT, rel)) as f:
         return f.read()
 
-def page(title, desc, body, active="", depth=0):
+FORMSPREE_FORM_ID = "mbdnrbko"
+FORMSPREE_SCRIPT = f"""<script>
+  window.formspree = window.formspree || function () {{ (formspree.q = formspree.q || []).push(arguments); }};
+  formspree('initForm', {{ formElement: '#enquiry-form', formId: '{FORMSPREE_FORM_ID}' }});
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>"""
+
+def page(title, desc, body, active="", depth=0, extra_script=""):
     css = _read("css/styles.css")
     js = _read("js/main.js")
     return f"""<!DOCTYPE html>
@@ -460,6 +486,7 @@ def page(title, desc, body, active="", depth=0):
 <script>
 {js}
 </script>
+{extra_script}
 </body>
 </html>"""
 
@@ -705,15 +732,18 @@ def build_contact():
 <section class="section">
   <div class="wrap-narrow">
     <p class="lede reveal" style="margin-bottom:3.5rem;">Tell us about your project and we will be in touch shortly.</p>
-    <form class="form-grid reveal" name="enquiry" method="POST" data-netlify="true">
-      <label><span>First Name</span><input type="text" name="first-name" autocomplete="given-name" required></label>
-      <label><span>Last Name</span><input type="text" name="last-name" autocomplete="family-name" required></label>
-      <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
-      <label><span>Phone</span><input type="tel" name="phone" autocomplete="tel"></label>
-      <label class="full"><span>Address</span><input type="text" name="address" autocomplete="street-address"></label>
-      <label><span>Desired Start Date</span><input type="text" name="start-date" placeholder="e.g. Fall 2026"></label>
+    <div class="form-status reveal" data-fs-success></div>
+    <div class="form-status form-status-error reveal" data-fs-error></div>
+    <form id="enquiry-form" class="form-grid reveal" name="enquiry" action="https://formspree.io/f/{FORMSPREE_FORM_ID}" method="POST">
+      <input type="hidden" name="_subject" value="New enquiry — Lauren Burns Interiors">
+      <label><span>First Name</span><input type="text" name="first-name" autocomplete="given-name" data-fs-field required><span class="field-error" data-fs-error="first-name"></span></label>
+      <label><span>Last Name</span><input type="text" name="last-name" autocomplete="family-name" data-fs-field required><span class="field-error" data-fs-error="last-name"></span></label>
+      <label><span>Email</span><input type="email" name="email" autocomplete="email" data-fs-field required><span class="field-error" data-fs-error="email"></span></label>
+      <label><span>Phone</span><input type="tel" name="phone" autocomplete="tel" data-fs-field></label>
+      <label class="full"><span>Address</span><input type="text" name="address" autocomplete="street-address" data-fs-field></label>
+      <label><span>Desired Start Date</span><input type="text" name="start-date" placeholder="e.g. Fall 2026" data-fs-field></label>
       <label><span>Project Type</span>
-        <select name="project-type">
+        <select name="project-type" data-fs-field>
           <option>New Construction</option>
           <option>Renovation &amp; Remodel</option>
           <option>Full Furnishing &amp; Styling</option>
@@ -722,17 +752,17 @@ def build_contact():
           <option>Commercial</option>
         </select>
       </label>
-      <label class="full"><span>Which rooms are included in your project?</span><input type="text" name="rooms"></label>
-      <label class="full"><span>Describe what we can help you with</span><textarea name="message"></textarea></label>
-      <label class="full"><span>How did you hear about us?</span><input type="text" name="referral"></label>
-      <div class="full"><button class="btn" type="submit" style="background:none; cursor:pointer;">Submit Enquiry</button></div>
+      <label class="full"><span>Which rooms are included in your project?</span><input type="text" name="rooms" data-fs-field></label>
+      <label class="full"><span>Describe what we can help you with</span><textarea name="message" data-fs-field required></textarea><span class="field-error" data-fs-error="message"></span></label>
+      <label class="full"><span>How did you hear about us?</span><input type="text" name="referral" data-fs-field></label>
+      <div class="full"><button class="btn" type="submit" data-fs-submit-btn style="background:none; cursor:pointer;">Submit Enquiry</button></div>
     </form>
     <p class="muted reveal" style="margin-top:3rem; font-size:0.9rem;">Prefer to talk? Call us at <a href="tel:+19198185683" style="color:var(--bone);">{PHONE}</a>.</p>
   </div>
 </section>"""
     return page("Enquire | Lauren Burns Interiors",
                 "Start a project with Lauren Burns Interiors, residential and commercial interior design in Raleigh, NC and nationwide.",
-                body, active="Enquire")
+                body, active="Enquire", extra_script=FORMSPREE_SCRIPT)
 
 # ---------------------------------------------------------------- write
 def write(path, html):
