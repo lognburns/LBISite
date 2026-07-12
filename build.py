@@ -701,7 +701,7 @@ def build_index():
 <section class="section">
   <div class="wrap-narrow statement reveal">
     <span class="eyebrow">Recognition</span>
-    <p class="lede">Voted Best Interior Design Firm, Cary Magazine Maggy Awards, six consecutive years.</p>
+    <p class="lede">Voted Best Interior Design Firm, Cary Magazine Maggy Awards, seven consecutive years.</p>
     <a class="btn" href="press.html">Press &amp; Awards</a>
   </div>
 </section>"""
