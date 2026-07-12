@@ -552,6 +552,8 @@ FORMSPREE_SCRIPT = f"""<script>
 def page(title, desc, body, active="", depth=0, extra_script=""):
     css = _read("css/styles.css")
     js = _read("js/main.js")
+    icon = img("logo", depth, "png")
+    favicon = ("../" * depth) + "favicon.ico"
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -559,6 +561,9 @@ def page(title, desc, body, active="", depth=0, extra_script=""):
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="icon" href="{favicon}" sizes="any">
+<link rel="icon" type="image/png" href="{icon}">
+<link rel="apple-touch-icon" href="{icon}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -875,6 +880,18 @@ def write_cname():
         f.write(CUSTOM_DOMAIN + "\n")
     print("wrote", "CNAME")
 
+def write_favicons():
+    src = os.path.join(OUT, IMG_DIR, "logo.png")
+    if not os.path.exists(src) or Image is None:
+        return
+    im = Image.open(src).convert("RGBA")
+    icon32 = im.resize((32, 32), Image.Resampling.LANCZOS)
+    icon180 = im.resize((180, 180), Image.Resampling.LANCZOS)
+    icon32.save(os.path.join(OUT, "favicon.ico"), format="ICO", sizes=[(32, 32)])
+    icon32.save(os.path.join(OUT, IMG_DIR, "favicon-32.png"), format="PNG")
+    icon180.save(os.path.join(OUT, IMG_DIR, "apple-touch-icon.png"), format="PNG")
+    print("wrote", "favicon.ico")
+
 if __name__ == "__main__":
     if "--fetch-images" in sys.argv:
         download_images()
@@ -891,5 +908,6 @@ if __name__ == "__main__":
     write("contact.html", build_contact())
     for pr in PROJECTS:
         write(f"projects/{pr['slug']}.html", build_project(pr))
+    write_favicons()
     write_cname()
     print("done,", len(PROJECTS) + 6, "pages")
