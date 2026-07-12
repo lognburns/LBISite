@@ -394,7 +394,7 @@ def nav(active, depth=0):
     p = "../" * depth
     items = [("Portfolio", f"{p}portfolio.html"), ("About", f"{p}about.html"),
              ("Services", f"{p}services.html"), ("Press", f"{p}press.html"),
-             ("Enquire", f"{p}contact.html")]
+             ("Inquire", f"{p}contact.html")]
     def link(label, href):
         active_cls = ' class="active"' if label == active else ""
         return f'      <li><a href="{href}"{active_cls}>{label}</a></li>'
@@ -429,7 +429,7 @@ def footer(depth=0):
     <div>
       <h4>Connect</h4>
       <ul>
-        <li><a href="{p}contact.html">Enquire</a></li>
+        <li><a href="{p}contact.html">Inquire</a></li>
         <li><a href="{IG}">Instagram</a></li>
         <li><a href="{FB}">Facebook</a></li>
         <li><a href="tel:+19198185683">{PHONE}</a></li>
@@ -456,7 +456,7 @@ def _read(rel):
 FORMSPREE_FORM_ID = "mbdnrbko"
 FORMSPREE_SCRIPT = f"""<script>
   window.formspree = window.formspree || function () {{ (formspree.q = formspree.q || []).push(arguments); }};
-  formspree('initForm', {{ formElement: '#enquiry-form', formId: '{FORMSPREE_FORM_ID}' }});
+  formspree('initForm', {{ formElement: '#inquiry-form', formId: '{FORMSPREE_FORM_ID}' }});
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>"""
 
@@ -535,7 +535,7 @@ def build_index():
       </a>
       <a class="panel" href="contact.html">
         <div class="bg" style="background-image:url('{img('0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3')}')"></div>
-        <div class="panel-label"><span class="eyebrow">Enquire</span><span class="display-md">Begin a Project</span></div>
+        <div class="panel-label"><span class="eyebrow">Inquire</span><span class="display-md">Begin a Project</span></div>
       </a>
     </div>
   </div>
@@ -683,7 +683,7 @@ def build_services():
   <div class="wrap-narrow statement reveal">
     <span class="eyebrow">Ready to begin?</span>
     <p class="lede">Tell us about your project.</p>
-    <a class="btn" href="contact.html">Enquire</a>
+    <a class="btn" href="contact.html">Inquire</a>
   </div>
 </section>"""
     return page("Services | Lauren Burns Interiors",
@@ -724,7 +724,7 @@ def build_contact():
     body = f"""<section class="page-hero">
   <div class="bg" style="background-image:url('{img('0b75c1_1e63287e8dec446483d7d2666a35d121')}')"></div>
   <div class="hero-caption">
-    <span class="eyebrow">Enquire</span>
+    <span class="eyebrow">Inquire</span>
     <h1 class="display-xl">Ready to Elevate Your&nbsp;Space?</h1>
     <div class="hero-rule"></div>
   </div>
@@ -734,8 +734,8 @@ def build_contact():
     <p class="lede reveal" style="margin-bottom:3.5rem;">Tell us about your project and we will be in touch shortly.</p>
     <div class="form-status reveal" data-fs-success></div>
     <div class="form-status form-status-error reveal" data-fs-error></div>
-    <form id="enquiry-form" class="form-grid reveal" name="enquiry" action="https://formspree.io/f/{FORMSPREE_FORM_ID}" method="POST">
-      <input type="hidden" name="_subject" value="New enquiry — Lauren Burns Interiors">
+    <form id="inquiry-form" class="form-grid reveal" name="inquiry" action="https://formspree.io/f/{FORMSPREE_FORM_ID}" method="POST">
+      <input type="hidden" name="_subject" value="New inquiry — Lauren Burns Interiors">
       <label><span>First Name</span><input type="text" name="first-name" autocomplete="given-name" data-fs-field required><span class="field-error" data-fs-error="first-name"></span></label>
       <label><span>Last Name</span><input type="text" name="last-name" autocomplete="family-name" data-fs-field required><span class="field-error" data-fs-error="last-name"></span></label>
       <label><span>Email</span><input type="email" name="email" autocomplete="email" data-fs-field required><span class="field-error" data-fs-error="email"></span></label>
@@ -755,14 +755,14 @@ def build_contact():
       <label class="full"><span>Which rooms are included in your project?</span><input type="text" name="rooms" data-fs-field></label>
       <label class="full"><span>Describe what we can help you with</span><textarea name="message" data-fs-field required></textarea><span class="field-error" data-fs-error="message"></span></label>
       <label class="full"><span>How did you hear about us?</span><input type="text" name="referral" data-fs-field></label>
-      <div class="full"><button class="btn" type="submit" data-fs-submit-btn style="background:none; cursor:pointer;">Submit Enquiry</button></div>
+      <div class="full"><button class="btn" type="submit" data-fs-submit-btn style="background:none; cursor:pointer;">Submit Inquiry</button></div>
     </form>
     <p class="muted reveal" style="margin-top:3rem; font-size:0.9rem;">Prefer to talk? Call us at <a href="tel:+19198185683" style="color:var(--bone);">{PHONE}</a>.</p>
   </div>
 </section>"""
-    return page("Enquire | Lauren Burns Interiors",
+    return page("Inquire | Lauren Burns Interiors",
                 "Start a project with Lauren Burns Interiors, residential and commercial interior design in Raleigh, NC and nationwide.",
-                body, active="Enquire", extra_script=FORMSPREE_SCRIPT)
+                body, active="Inquire", extra_script=FORMSPREE_SCRIPT)
 
 # ---------------------------------------------------------------- write
 def write(path, html):
