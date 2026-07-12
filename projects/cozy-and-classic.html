@@ -486,6 +486,14 @@ input:focus, select:focus, textarea:focus {
 select { appearance: none; }
 select option { background: var(--ink); }
 textarea { resize: vertical; min-height: 7rem; }
+.form-status:empty { display: none; }
+.form-status { margin-bottom: 1.5rem; color: var(--gold); font-size: 0.95rem; }
+.form-status-error { color: #d4a59a; }
+.field-error:empty { display: none; }
+.field-error { display: block; margin-top: 0.35rem; font-size: 0.8125rem; color: #d4a59a; }
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-bottom-color: #d4a59a;
+}
 @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Footer ---------- */
@@ -697,5 +705,6 @@ if (portfolioFilters.length && portfolioCards.length) {
 }
 
 </script>
+
 </body>
 </html>

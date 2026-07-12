@@ -486,6 +486,14 @@ input:focus, select:focus, textarea:focus {
 select { appearance: none; }
 select option { background: var(--ink); }
 textarea { resize: vertical; min-height: 7rem; }
+.form-status:empty { display: none; }
+.form-status { margin-bottom: 1.5rem; color: var(--gold); font-size: 0.95rem; }
+.form-status-error { color: #d4a59a; }
+.field-error:empty { display: none; }
+.field-error { display: block; margin-top: 0.35rem; font-size: 0.8125rem; color: #d4a59a; }
+input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"] {
+  border-bottom-color: #d4a59a;
+}
 @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Footer ---------- */
@@ -638,6 +646,13 @@ textarea { resize: vertical; min-height: 7rem; }
         <span class="display-md">Beach Serenity</span>
       </div>
     </a>
+    <a class="card reveal" href="projects/woodland-modern.html">
+      <div class="frame"><img src="images/masc_260209_268w.jpg" alt="Woodland Modern, interior design by Lauren Burns Interiors" loading="lazy"></div>
+      <div class="meta">
+        <span class="eyebrow">Private Residential</span>
+        <span class="display-md">Woodland Modern</span>
+      </div>
+    </a>
     <a class="card reveal" href="projects/kitchen-refresh.html">
       <div class="frame"><img src="images/0b75c1_d3a63e0e3dbc4de492078a743df39282.jpg" alt="Kitchen Refresh, interior design by Lauren Burns Interiors" loading="lazy"></div>
       <div class="meta">
@@ -772,5 +787,6 @@ if (portfolioFilters.length && portfolioCards.length) {
 }
 
 </script>
+
 </body>
 </html>
