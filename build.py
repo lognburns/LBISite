@@ -515,13 +515,6 @@ def footer(depth=0):
         <li><a href="tel:+19198185683">{PHONE}</a></li>
       </ul>
     </div>
-    <div>
-      <h4>Recognition</h4>
-      <ul>
-        <li><a href="{p}press.html">Best Interior Design Firm, Maggy Awards, 2020&ndash;2025</a></li>
-        <li><a href="{p}press.html">5 West Diamond Awards Gold, 2026</a></li>
-      </ul>
-    </div>
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 Lauren Burns Interiors. All rights reserved.</span>
