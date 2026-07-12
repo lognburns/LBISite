@@ -272,8 +272,7 @@ HERO_SLIDES = [
 HERO_SLIDES_MOBILE = [
     ("lochinvar_241016_2104w", "Custom Luxury", "Private Residential"),
     ("masc_260209_337w", "Modern Masculine", "Private Residential"),
-    ("0b75c1_6f44a95d7eb044f2b84b98cbbd910f0b", "Cozy & Classic", "Private Residential"),
-    ("0b75c1_c8fe9ef7bb404fb090c9fccee373ab85", "Cozy & Classic", "Private Residential"),
+    ("0b75c1_223d948238024272af5346c5199abc8a", "Kitchen Refresh", "Private Residential"),
 ]
 
 SERVICES = [
