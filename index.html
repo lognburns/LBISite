@@ -259,12 +259,18 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
+.hero-slides { position: absolute; inset: 0; }
+.hero-slides--mobile { display: none; }
 .hero-slide {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
   opacity: 0; transition: opacity 1.6s ease;
 }
 .hero-slide.on { opacity: 1; }
+@media (max-width: 860px) {
+  .hero-slides--desktop { display: none; }
+  .hero-slides--mobile { display: block; }
+}
 .hero::after {
   content: ""; position: absolute; inset: 0;
   background:
@@ -539,6 +545,8 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
   border-bottom-color: #d4a59a;
 }
 @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
+.contact-phone-break { display: none; }
+@media (max-width: 640px) { .contact-phone-break { display: block; } }
 
 /* ---------- Footer ---------- */
 .footer {
@@ -610,9 +618,17 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 </header>
 <main>
 <section class="hero">
-  <div class="hero-slide on" data-title="Bold & Earthy" data-cat="Private Residential" style="background-image:url('images/0b75c1_a97310e5504d41d69c3f35d83c08957f.jpg')" role="img" aria-label="Bold & Earthy interior by Lauren Burns Interiors"></div>
-  <div class="hero-slide" data-title="Custom Luxury" data-cat="Private Residential" style="background-image:url('images/0b75c1_d48f5e242e774d4ca6cdac93cfe24637.jpg')" role="img" aria-label="Custom Luxury interior by Lauren Burns Interiors"></div>
-  <div class="hero-slide" data-title="Organic Sophistication" data-cat="Private Residential" style="background-image:url('images/0b75c1_fee480971fe84e58b260f842b8c03450.jpg')" role="img" aria-label="Organic Sophistication interior by Lauren Burns Interiors"></div>
+  <div class="hero-slides hero-slides--desktop">
+    <div class="hero-slide on" data-title="Bold & Earthy" data-cat="Private Residential" style="background-image:url('images/0b75c1_a97310e5504d41d69c3f35d83c08957f.jpg')" role="img" aria-label="Bold & Earthy interior by Lauren Burns Interiors"></div>
+    <div class="hero-slide" data-title="Custom Luxury" data-cat="Private Residential" style="background-image:url('images/0b75c1_d48f5e242e774d4ca6cdac93cfe24637.jpg')" role="img" aria-label="Custom Luxury interior by Lauren Burns Interiors"></div>
+    <div class="hero-slide" data-title="Organic Sophistication" data-cat="Private Residential" style="background-image:url('images/0b75c1_fee480971fe84e58b260f842b8c03450.jpg')" role="img" aria-label="Organic Sophistication interior by Lauren Burns Interiors"></div>
+  </div>
+  <div class="hero-slides hero-slides--mobile">
+    <div class="hero-slide on" data-title="Custom Luxury" data-cat="Private Residential" style="background-image:url('images/lochinvar_241016_2104w.jpg')" role="img" aria-label="Custom Luxury interior by Lauren Burns Interiors"></div>
+    <div class="hero-slide" data-title="Modern Masculine" data-cat="Private Residential" style="background-image:url('images/masc_260209_337w.jpg')" role="img" aria-label="Modern Masculine interior by Lauren Burns Interiors"></div>
+    <div class="hero-slide" data-title="Cozy & Classic" data-cat="Private Residential" style="background-image:url('images/0b75c1_6f44a95d7eb044f2b84b98cbbd910f0b.jpg')" role="img" aria-label="Cozy & Classic interior by Lauren Burns Interiors"></div>
+    <div class="hero-slide" data-title="Cozy & Classic" data-cat="Private Residential" style="background-image:url('images/0b75c1_c8fe9ef7bb404fb090c9fccee373ab85.jpg')" role="img" aria-label="Cozy & Classic interior by Lauren Burns Interiors"></div>
+  </div>
   <div class="hero-caption">
     <span class="eyebrow" data-hero-cat>Private Residential</span>
     <h1 class="display-xl" data-hero-title>Bold & Earthy</h1>
@@ -775,18 +791,47 @@ if (menuBtn) {
 }
 
 // Hero crossfade (homepage)
-const slides = document.querySelectorAll('.hero-slide');
+const heroDesktop = document.querySelector('.hero-slides--desktop');
+const heroMobile = document.querySelector('.hero-slides--mobile');
 const capTitle = document.querySelector('[data-hero-title]');
 const capCat = document.querySelector('[data-hero-cat]');
-if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  let i = 0;
-  setInterval(() => {
+const heroMq = window.matchMedia('(max-width: 860px)');
+let heroTimer;
+
+function activeHeroSlides() {
+  if (heroMq.matches && heroMobile) return [...heroMobile.querySelectorAll('.hero-slide')];
+  if (heroDesktop) return [...heroDesktop.querySelectorAll('.hero-slide')];
+  return [...document.querySelectorAll('.hero-slide')];
+}
+
+function syncHeroCaption(slide) {
+  if (capTitle && slide.dataset.title) capTitle.textContent = slide.dataset.title;
+  if (capCat && slide.dataset.cat) capCat.textContent = slide.dataset.cat;
+}
+
+function setupHero() {
+  clearInterval(heroTimer);
+  const slides = activeHeroSlides();
+  if (!slides.length) return;
+
+  const active = slides.find((slide) => slide.classList.contains('on')) || slides[0];
+  slides.forEach((slide) => slide.classList.toggle('on', slide === active));
+  syncHeroCaption(active);
+
+  if (slides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let i = slides.indexOf(active);
+  heroTimer = setInterval(() => {
     slides[i].classList.remove('on');
     i = (i + 1) % slides.length;
     slides[i].classList.add('on');
-    if (capTitle && slides[i].dataset.title) capTitle.textContent = slides[i].dataset.title;
-    if (capCat && slides[i].dataset.cat) capCat.textContent = slides[i].dataset.cat;
+    syncHeroCaption(slides[i]);
   }, 6000);
+}
+
+if (heroDesktop || heroMobile) {
+  setupHero();
+  heroMq.addEventListener('change', setupHero);
 }
 
 // Scroll reveals

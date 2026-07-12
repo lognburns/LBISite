@@ -16,18 +16,47 @@ if (menuBtn) {
 }
 
 // Hero crossfade (homepage)
-const slides = document.querySelectorAll('.hero-slide');
+const heroDesktop = document.querySelector('.hero-slides--desktop');
+const heroMobile = document.querySelector('.hero-slides--mobile');
 const capTitle = document.querySelector('[data-hero-title]');
 const capCat = document.querySelector('[data-hero-cat]');
-if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  let i = 0;
-  setInterval(() => {
+const heroMq = window.matchMedia('(max-width: 860px)');
+let heroTimer;
+
+function activeHeroSlides() {
+  if (heroMq.matches && heroMobile) return [...heroMobile.querySelectorAll('.hero-slide')];
+  if (heroDesktop) return [...heroDesktop.querySelectorAll('.hero-slide')];
+  return [...document.querySelectorAll('.hero-slide')];
+}
+
+function syncHeroCaption(slide) {
+  if (capTitle && slide.dataset.title) capTitle.textContent = slide.dataset.title;
+  if (capCat && slide.dataset.cat) capCat.textContent = slide.dataset.cat;
+}
+
+function setupHero() {
+  clearInterval(heroTimer);
+  const slides = activeHeroSlides();
+  if (!slides.length) return;
+
+  const active = slides.find((slide) => slide.classList.contains('on')) || slides[0];
+  slides.forEach((slide) => slide.classList.toggle('on', slide === active));
+  syncHeroCaption(active);
+
+  if (slides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let i = slides.indexOf(active);
+  heroTimer = setInterval(() => {
     slides[i].classList.remove('on');
     i = (i + 1) % slides.length;
     slides[i].classList.add('on');
-    if (capTitle && slides[i].dataset.title) capTitle.textContent = slides[i].dataset.title;
-    if (capCat && slides[i].dataset.cat) capCat.textContent = slides[i].dataset.cat;
+    syncHeroCaption(slides[i]);
   }, 6000);
+}
+
+if (heroDesktop || heroMobile) {
+  setupHero();
+  heroMq.addEventListener('change', setupHero);
 }
 
 // Scroll reveals
