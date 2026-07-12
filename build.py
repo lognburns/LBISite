@@ -455,18 +455,18 @@ def compress_images():
 def brand_block(depth=0, footer=False):
     p = "../" * depth
     logo_src = img("logo", depth, "png")
-    sub = "Interiors, Raleigh, NC" if footer else "Interiors"
     text = f"""    <span class="brand-text">
       <span class="brand-name">Lauren Burns</span>
-      <span class="brand-sub">{sub}</span>
+      <span class="brand-sub">Interiors</span>
     </span>"""
+    logo = f'<img class="brand-logo" src="{logo_src}" alt="" width="52" height="52">'
     if footer:
         return f"""    <div class="footer-brand">
-      <img class="footer-logo" src="{logo_src}" alt="" width="64" height="64">
+      {logo}
 {text}
     </div>"""
     return f"""  <a class="brand" href="{p}index.html" aria-label="Lauren Burns Interiors home">
-    <img class="brand-logo" src="{logo_src}" alt="" width="52" height="52">
+    {logo}
 {text}
   </a>"""
 
