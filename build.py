@@ -160,22 +160,6 @@ PROJECTS = [
         ],
     },
     {
-        "slug": "midcentury-modern", "title": "Mid-Century Modern", "type": "residential",
-        "cat": "Private Residential",
-        "blurb": "Clean lines, warm woods, and iconic forms, a mid-century spirit updated for contemporary living.",
-        "images": [
-            ("0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3", "g-t"),
-            ("0b75c1_be0f9d44ec6f47628be324751186ea55", "g-t"),
-            ("0b75c1_c1a9e9c29b24481c83e8485bfea1317d", "g-t"),
-            ("0b75c1_082dbb3338ac4ee4968d19099691a482", "g-t"),
-            ("0b75c1_166c812eb92a45e7944ee235f8861ac1", "g-w"),
-            ("0b75c1_1d4e39534dcc4a1d844fa9216a985f9d", "g-w"),
-            ("0b75c1_885c5109aa6b4f15b9ea5011e1ee1006", "g-t"),
-            ("0b75c1_6263498fc89d4bffba6971a635302a6d", "g-w"),
-            ("0b75c1_cb420fc52fee4be8b7ebd565e9bb9f3c", "g-w"),
-        ],
-    },
-    {
         "slug": "cozy-and-classic", "title": "Cozy & Classic", "type": "residential",
         "cat": "Private Residential",
         "blurb": "Traditional details and layered comfort combine for a home that feels welcoming, polished, and timeless.",
@@ -279,7 +263,6 @@ HERO_SLIDES = [
     ("0b75c1_a97310e5504d41d69c3f35d83c08957f", "Bold & Earthy", "Private Residential"),
     ("0b75c1_d48f5e242e774d4ca6cdac93cfe24637", "Custom Luxury", "Private Residential"),
     ("0b75c1_fee480971fe84e58b260f842b8c03450", "Organic Sophistication", "Private Residential"),
-    ("0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3", "Mid-Century Modern", "Private Residential"),
 ]
 
 SERVICES = [
@@ -358,7 +341,6 @@ def all_images():
     for img_id in (
         "0b75c1_d48f5e242e774d4ca6cdac93cfe24637",
         "0b75c1_69b48635031d45babb53d8bc25c17981",
-        "0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3",
         "0b75c1_dced07394c8f41e78ac4e3596ea79e6e",
         "0b75c1_1e63287e8dec446483d7d2666a35d121",
     ):
@@ -632,7 +614,7 @@ def build_index():
         <div class="panel-label"><span class="eyebrow">Services</span><span class="display-md">How We Work</span></div>
       </a>
       <a class="panel" href="contact.html">
-        <div class="bg" style="background-image:url('{img('0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3')}')"></div>
+        <div class="bg" style="background-image:url('{img('0b75c1_1e63287e8dec446483d7d2666a35d121')}')"></div>
         <div class="panel-label"><span class="eyebrow">Inquire</span><span class="display-md">Begin a Project</span></div>
       </a>
     </div>
@@ -736,7 +718,7 @@ def build_about():
       </div>
     </div>""" for name, role, img_id, ext, bio in TEAM)
     body = f"""<section class="page-hero">
-  <div class="bg" style="background-image:url('{img('0b75c1_31d5789fe33f4927ba1f6ef3f40c6db3')}')"></div>
+  <div class="bg" style="background-image:url('{img('0b75c1_9db3879aa591458b8cec814d76fe20a5')}')"></div>
   <div class="hero-caption">
     <span class="eyebrow">About</span>
     <h1 class="display-xl">The Studio</h1>
