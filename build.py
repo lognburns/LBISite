@@ -269,6 +269,13 @@ HERO_SLIDES = [
     ("0b75c1_fee480971fe84e58b260f842b8c03450", "Organic Sophistication", "Private Residential"),
 ]
 
+HERO_SLIDES_MOBILE = [
+    ("lochinvar_241016_2104w", "Custom Luxury", "Private Residential"),
+    ("masc_260209_337w", "Modern Masculine", "Private Residential"),
+    ("0b75c1_6f44a95d7eb044f2b84b98cbbd910f0b", "Cozy & Classic", "Private Residential"),
+    ("0b75c1_c8fe9ef7bb404fb090c9fccee373ab85", "Cozy & Classic", "Private Residential"),
+]
+
 SERVICES = [
     ("New Construction & Finish Selections",
      "From foundation to final detail, we guide every finish decision with intention and cohesion. We streamline the selection process for builders and homeowners alike. From countertops and cabinetry to tile, lighting, flooring, exterior materials, paint, and stains, every selection is organized and submitted on schedule for a seamless build."),
@@ -340,6 +347,8 @@ def all_images():
             iid, _, ext = parse_image(entry)
             seen[iid] = ext
     for img_id, _, _ in HERO_SLIDES:
+        seen.setdefault(img_id, "jpg")
+    for img_id, _, _ in HERO_SLIDES_MOBILE:
         seen.setdefault(img_id, "jpg")
     for _, _, img_id, ext, _ in TEAM:
         seen[img_id] = normalize_ext(ext)
@@ -572,10 +581,11 @@ def page(title, desc, body, active="", depth=0, extra_script=""):
 
 # ---------------------------------------------------------------- pages
 def build_index():
-    slides = "\n".join(
-        f'  <div class="hero-slide{" on" if i == 0 else ""}" data-title="{t}" data-cat="{c}" '
-        f'style="background-image:url(\'{img(img_id)}\')" role="img" aria-label="{t} interior by Lauren Burns Interiors"></div>'
-        for i, (img_id, t, c) in enumerate(HERO_SLIDES))
+    def hero_slides(slides):
+        return "\n".join(
+            f'    <div class="hero-slide{" on" if i == 0 else ""}" data-title="{t}" data-cat="{c}" '
+            f'style="background-image:url(\'{img(img_id)}\')" role="img" aria-label="{t} interior by Lauren Burns Interiors"></div>'
+            for i, (img_id, t, c) in enumerate(slides))
 
     featured = "\n".join(f"""    <a class="card reveal" href="projects/{pr['slug']}.html">
       <div class="frame"><img src="{thumb_src(pr)}" alt="{pr['title']}, interior design by Lauren Burns Interiors" loading="lazy"></div>
@@ -586,7 +596,12 @@ def build_index():
     </a>""" for pr in PROJECTS if pr["type"] == "residential")
 
     body = f"""<section class="hero">
-{slides}
+  <div class="hero-slides hero-slides--desktop">
+{hero_slides(HERO_SLIDES)}
+  </div>
+  <div class="hero-slides hero-slides--mobile">
+{hero_slides(HERO_SLIDES_MOBILE)}
+  </div>
   <div class="hero-caption">
     <span class="eyebrow" data-hero-cat>{HERO_SLIDES[0][2]}</span>
     <h1 class="display-xl" data-hero-title>{HERO_SLIDES[0][1]}</h1>
@@ -819,7 +834,7 @@ def build_contact():
       <label><span>Email</span><input type="email" name="email" autocomplete="email" data-fs-field required><span class="field-error" data-fs-error="email"></span></label>
       <label><span>Phone</span><input type="tel" name="phone" autocomplete="tel" data-fs-field></label>
       <label class="full"><span>Address</span><input type="text" name="address" autocomplete="street-address" data-fs-field></label>
-      <label><span>Desired Start Date</span><input type="text" name="start-date" placeholder="e.g. Fall 2026" data-fs-field></label>
+      <label><span>Desired Start Date</span><input type="text" name="start-date" data-fs-field></label>
       <label><span>Project Type</span>
         <select name="project-type" data-fs-field>
           <option>New Construction</option>
@@ -839,7 +854,7 @@ def build_contact():
         <div class="form-status form-status-error" data-fs-error></div>
       </div>
     </form>
-    <p class="muted reveal" style="margin-top:3rem; font-size:0.9rem;">Prefer to Call or Text? You can reach us at <a href="tel:+19198185683" style="color:var(--bone);">(919) 818 - 5683</a>.</p>
+    <p class="muted reveal contact-phone-note" style="margin-top:3rem; font-size:0.9rem;">Prefer to Call or Text?<br class="contact-phone-break"> You can reach us at <a href="tel:+19198185683" style="color:var(--bone);">(919) 818 - 5683</a>.</p>
   </div>
 </section>"""
     return page("Inquire | Lauren Burns Interiors",
