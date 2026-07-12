@@ -7,8 +7,15 @@ import os
 import sys
 import urllib.request
 
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site")
 IMG_DIR = "images"
+MAX_IMAGE_DIMENSION = 1920
+JPEG_QUALITY = 82
 
 def wix_src(img_id, ext="jpg"):
     """Original Wix CDN URL (used only when fetching assets)."""
@@ -117,7 +124,7 @@ PROJECTS = [
         ],
     },
     {
-        "slug": "woodland-modern", "title": "Woodland Modern", "type": "residential",
+        "slug": "modern-masculine", "title": "Modern Masculine", "type": "residential",
         "cat": "Private Residential",
         "blurb": "Dark wood, veined marble, and floor-to-ceiling views, modern lines set against a wooded backdrop.",
         "images": [
@@ -248,10 +255,10 @@ PROJECTS = [
         "cat": "Cary, NC",
         "blurb": "Warm wood tones and layered texture bring intimate energy to this Cary dining destination.",
         "images": [
-            ("0b75c1_b164b4af0ea04dd0820bb66ae8de3736", "g-t", "png"),
-            ("0b75c1_4c501a9d61d6441ebca9c24eb6a42972", "g-t", "png"),
-            ("0b75c1_f597a99668484d279f9f1e8219660b2f", "g-t", "png"),
-            ("0b75c1_0d23b92e4cb64385ac13772a7d298e76", "g-t", "png"),
+            ("0b75c1_b164b4af0ea04dd0820bb66ae8de3736", "g-t", "jpg"),
+            ("0b75c1_4c501a9d61d6441ebca9c24eb6a42972", "g-t", "jpg"),
+            ("0b75c1_f597a99668484d279f9f1e8219660b2f", "g-t", "jpg"),
+            ("0b75c1_0d23b92e4cb64385ac13772a7d298e76", "g-t", "jpg"),
         ],
     },
     {
@@ -370,6 +377,89 @@ def download_images():
         print("fetch", url)
         urllib.request.urlretrieve(url, dest)
     print("downloaded", len(all_images()), "images into", img_root)
+
+def _image_has_alpha(im):
+    if im.mode in ("RGBA", "LA"):
+        return True
+    if im.mode == "P":
+        return "transparency" in im.info
+    return False
+
+def _resize_image(im, max_dim):
+    w, h = im.size
+    if max(w, h) <= max_dim:
+        return im
+    if w >= h:
+        new_w = max_dim
+        new_h = int(h * max_dim / w)
+    else:
+        new_h = max_dim
+        new_w = int(w * max_dim / h)
+    return im.resize((new_w, new_h), Image.Resampling.LANCZOS)
+
+def compress_images():
+    if Image is None:
+        raise SystemExit("Pillow is required for image compression. Install with: pip3 install Pillow")
+
+    img_root = os.path.join(OUT, IMG_DIR)
+    if not os.path.isdir(img_root):
+        print("no images directory:", img_root)
+        return
+
+    before = 0
+    after = 0
+    converted = 0
+    optimized = 0
+
+    for name in sorted(os.listdir(img_root)):
+        path = os.path.join(img_root, name)
+        if not os.path.isfile(path):
+            continue
+        ext = name.rsplit(".", 1)[-1].lower()
+        if ext not in {"jpg", "jpeg", "png", "webp"}:
+            continue
+
+        before += os.path.getsize(path)
+        stem = name.rsplit(".", 1)[0]
+        is_logo = stem == "logo"
+        max_dim = 512 if is_logo else MAX_IMAGE_DIMENSION
+
+        with Image.open(path) as im:
+            im = _resize_image(im, max_dim)
+            has_alpha = _image_has_alpha(im)
+
+            if is_logo or (ext == "png" and has_alpha):
+                if im.mode not in ("RGBA", "RGB"):
+                    im = im.convert("RGBA" if has_alpha else "RGB")
+                im.save(path, format="PNG", optimize=True, compress_level=9)
+            elif ext in {"jpg", "jpeg"} or ext == "png":
+                rgb = im.convert("RGB")
+                jpg_path = os.path.join(img_root, f"{stem}.jpg")
+                rgb.save(
+                    jpg_path,
+                    format="JPEG",
+                    quality=JPEG_QUALITY,
+                    optimize=True,
+                    progressive=True,
+                )
+                if path != jpg_path and os.path.exists(path):
+                    os.remove(path)
+                    converted += 1
+                path = jpg_path
+            elif ext == "webp":
+                rgb = im.convert("RGB") if not has_alpha else im
+                rgb.save(path, format="WEBP", quality=JPEG_QUALITY, method=6)
+
+        after += os.path.getsize(path)
+        optimized += 1
+
+    saved = before - after
+    pct = (saved / before * 100) if before else 0
+    print(
+        f"compressed {optimized} images: "
+        f"{before / 1024 / 1024:.1f}MB -> {after / 1024 / 1024:.1f}MB "
+        f"({pct:.0f}% smaller, {converted} converted to JPEG)"
+    )
 
 # ---------------------------------------------------------------- chrome
 def brand_block(depth=0, footer=False):
@@ -785,6 +875,9 @@ def write(path, html):
 if __name__ == "__main__":
     if "--fetch-images" in sys.argv:
         download_images()
+        sys.exit(0)
+    if "--compress-images" in sys.argv:
+        compress_images()
         sys.exit(0)
     download_images()
     write("index.html", build_index())
