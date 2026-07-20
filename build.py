@@ -64,6 +64,7 @@ PROJECTS = [
             ("lochinvar_241016_2212w", "g-h"),
             ("lochinvar_241016_2333w", "g-h"),
             ("lochinvar_241016_2347w", "g-w"),
+            ("luxury_241016_2377w", "g-w"),
             ("lochinvar_241016_2234w", "g-w"),
             ("lochinvar_241016_2258w", "g-t"),
             ("lochinvar_241016_2156w", "g-t"),
